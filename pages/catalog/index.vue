@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class='main main__container'>
   Catalog
 </div>
 </template>
@@ -10,6 +10,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
+.main {
+  &__constainer {
+    width: 100%;
+    height: 100%;
+  }
+}
 
 </style>
