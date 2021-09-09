@@ -23,6 +23,8 @@ export default {
         {title: 'Каталог', link: '/catalog', icon: 'collections'},
         {title: 'Услуги', link: '/services', icon: 'brush'},
         {title: 'Доставка', link: '/delivery', icon: 'map'},
+        {title: 'Контакты', link: '/contacts', icon: 'call'},
+        {title: 'О нас', link: '/about', icon: 'home'},
         {title: 'Корзина', link: '/cart', icon: 'shopping_cart'},
       ],
     }
@@ -64,7 +66,7 @@ a {
     display: flex;
     flex-direction: row;
     align-self: center;
-    margin: 0 10% 0 0;
+    margin: 0 7% 0 0;
   }
   &__logo {
     color: #414141;
