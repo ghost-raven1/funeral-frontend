@@ -21,6 +21,8 @@ export default {
     return {
       links : [
         {title: 'Каталог', link: '/catalog', icon: 'collections'},
+        {title: 'Услуги', link: '/services', icon: 'brush'},
+        {title: 'Доставка', link: '/delivery', icon: 'map'},
         {title: 'Корзина', link: '/cart', icon: 'shopping_cart'},
       ],
     }
