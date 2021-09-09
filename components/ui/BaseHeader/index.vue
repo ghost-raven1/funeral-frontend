@@ -65,6 +65,7 @@ a {
     margin: 0 10% 0 0;
   }
   &__logo {
+    color: #414141;
     align-items: center;
     display: flex;
     height: 60px;
