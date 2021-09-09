@@ -4,7 +4,11 @@
         Ритуальные услуги
     </div>
     <div v-for='(item, i) in links' :key='i' class='header__navs'>
-      <nuxt-link :to='item.link'>{{item.title}}</nuxt-link>
+      <nuxt-link :to='item.link'>{{ item.title }}
+        <i v-if="item.icon" class="material-icons">
+          {{item.icon}}
+        </i>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -16,8 +20,8 @@ export default {
   data () {
     return {
       links : [
-        {title: 'Каталог', link: '/catalog'},
-        {title: 'Корзина', link: '/cart'},
+        {title: 'Каталог', link: '/catalog', icon: 'collections'},
+        {title: 'Корзина', link: '/cart', icon: 'shopping_cart'},
       ],
     }
   },
@@ -34,11 +38,13 @@ export default {
 
 <style lang="scss" scoped>
 a {
+  display: flex;
   text-decoration: none;
   color: grey;
   font-size: 18px;
   font-weight: 500;
   transition: .5s;
+  align-items: center;
   &:hover {
     color: darkgrey;
   }
@@ -68,6 +74,10 @@ a {
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+    transition: .5s;
+    &:hover {
+      color: #5f5f5f;
+    }
   }
 }
 
