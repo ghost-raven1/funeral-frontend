@@ -1,9 +1,7 @@
 <template>
   <div class="header">
-    <div class="header__logo">
-      <div class="logo" @click="toMainPage()">
-        Funeral
-      </div>
+    <div class="header__logo" @click="toMainPage()">
+        Ритуальные услуги
     </div>
     <div v-for='(item, i) in links' :key='i' class='header__navs'>
       <nuxt-link :to='item.link'>{{item.title}}</nuxt-link>
@@ -62,31 +60,14 @@ a {
   }
   &__logo {
     align-items: center;
-    align-self: flex-start;
     display: flex;
     height: 60px;
     width: 320px;
-    filter: brightness(1);
-    padding: 4px;
+    padding: 0 4px 4px;
     flex-direction: row;
-  }
-}
-.logo {
-  color: white;
-  background: grey;
-  border-radius: 6px;
-  padding: 5px 10px;
-  font-family: montserrat, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  align-items: center;
-  transition: all .15s linear 0s;
-  text-shadow: 0 2px 2px -1px grey;
-  cursor: pointer;
-  &_lgreen {
-    @extend .logo;
-    padding: 0 5px;
-    color: mediumseagreen;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
   }
 }
 

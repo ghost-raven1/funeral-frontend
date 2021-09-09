@@ -9,17 +9,16 @@
           <nuxt />
         </div>
       </div>
+      <div class="template__footer">
+        <Footer />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '~/components/ui/BaseHeader/index.vue'
 export default {
   name: 'Default',
-  components: {
-    Header,
-  }
 }
 </script>
 
@@ -30,7 +29,7 @@ export default {
   &__template {
     height: 60px;
     display: grid;
-    grid-template-rows: 60px 1fr auto;
+    grid-template-rows: 60px 1fr 59px;
   }
 }
 .template {
@@ -51,9 +50,11 @@ export default {
     margin: 0 auto;
   }
   &__header {
-    margin-top: -10px;
-    margin-left: -5px;
     height: 100%;
+  }
+  &__footer {
+    height: 100%;
+    width: 100%;
   }
 }
 </style>
