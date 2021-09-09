@@ -150,7 +150,7 @@ export default {
   }
 }
 .main {
-  &__constainer {
+  &__container {
     width: 100%;
     height: 100%;
   }
