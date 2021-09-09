@@ -5,21 +5,44 @@
   </div>
   <div class='container__grid'>
     <div v-for='(item, i) in items' :key='i' class='grid grid__item'>
-      <div class='grid item'>
-        <div class='item__title'>
-          {{ item.title }}
-        </div>
-        <div class='item__info'>
-          <span v-if='item.phone'>
-            {{ item.phone }}
-          </span>
-          <span v-if='item.email'>
-            {{ item.email }}
-          </span>
-          <span v-if='item.address'>
-            {{ item.address }}
-          </span>
-        </div>
+
+      <div v-if='item.phone' class='grid item'>
+        <a href=''>
+          <div class='item'>
+            <div class='item__title'>
+              {{ item.title }}
+            </div>
+            <div class='item__info'>
+              {{ item.phone }}
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div v-if='item.email' class='grid item'>
+        <a>
+          <div class='item'>
+            <div class='item__title'>
+              {{ item.title }}
+            </div>
+            <div class='item__info'>
+              {{ item.email }}
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div v-if='item.address' class='grid item'>
+        <a>
+          <div class='item'>
+            <div class='item__title'>
+              {{ item.title }}
+            </div>
+            <div class='item__info'>
+              {{ item.address }}
+            </div>
+          </div>
+        </a>
       </div>
 
     </div>
