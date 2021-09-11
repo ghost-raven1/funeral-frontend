@@ -8,13 +8,13 @@
 
 <script>
 export default {
-  name: 'index'
+  name: 'Index'
 }
 </script>
 
 <style lang='scss' scoped>
 .main {
-  &__constainer {
+  &__container {
     width: 100%;
     height: 100%;
   }
