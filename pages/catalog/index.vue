@@ -5,7 +5,7 @@
   </div>
   <div class='container__grid'>
     <div v-for="(item, i) in items" :key='i' class='grid grid__item'>
-      <div class='grid item'>
+      <div class='grid item' @click='toItem(item.id)'>
         <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />
         <img v-if="!item.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='item.title' />
         <div class='item__title'>
@@ -27,69 +27,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Catalog',
   data() {
-    return {
-      items: [
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
-          cost: '100',
-        },
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: '',
-          cost: '100',
-        },
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: 'http://www.sunhome.ru/i/wallpapers/62/skachat-detskie-kartinki.orig.jpg',
-          cost: '100',
-        },
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: 'http://www.sunhome.ru/i/wallpapers/62/skachat-detskie-kartinki.orig.jpg',
-          cost: '100',
-        },
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: 'http://www.sunhome.ru/i/wallpapers/62/skachat-detskie-kartinki.orig.jpg',
-          cost: '100',
-        },
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: 'http://www.sunhome.ru/i/wallpapers/62/skachat-detskie-kartinki.orig.jpg',
-          cost: '100',
-        },
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: 'http://www.sunhome.ru/i/wallpapers/62/skachat-detskie-kartinki.orig.jpg',
-          cost: '100',
-        },
-        {
-          title: 'Товар 1',
-          desc: 'Описание товара 1',
-          category: 'Категория',
-          imgUrl: 'http://www.sunhome.ru/i/wallpapers/62/skachat-detskie-kartinki.orig.jpg',
-          cost: '100',
-        }
-      ],
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters({
+      items: 'test/getProducts',
+    }),
+  },
+  methods: {
+    toItem(id) {
+      this.$router.push(`/catalog/${id}`);
+    },
   },
 }
 </script>
