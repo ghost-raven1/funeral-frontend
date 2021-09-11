@@ -18,18 +18,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   data () {
-    return {
-      links : [
-        {title: 'Каталог', link: '/catalog', icon: 'collections'},
-        {title: 'Услуги', link: '/services', icon: 'brush'},
-        {title: 'Контакты', link: '/contacts', icon: 'call'},
-        {title: 'О нас', link: '/about', icon: 'home'},
-        {title: 'Корзина', link: '/cart', icon: 'shopping_cart'},
-      ],
-    }
+    return {}
   },
   computed: {
-    ...mapGetters({})
+    ...mapGetters({
+      links: 'header/getLinks'
+    })
   },
   methods: {
     toMainPage (){
