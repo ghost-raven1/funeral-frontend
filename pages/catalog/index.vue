@@ -1,29 +1,31 @@
 <template>
-<div class='main main__container'>
-  <div class='container container__title'>
-    Каталог
-  </div>
-  <div class='container__grid'>
-    <div v-for="(item, i) in items" :key='i' class='grid grid__item'>
-      <div class='grid item' @click='toItem(item.id)'>
-        <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />
-        <img v-if="!item.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='item.title' />
-        <div class='item__title'>
-          {{ item.title }}
-        </div>
-        <div class='item__category'>
-          {{ item.category }}
-        </div>
-        <div class='item__desc'>
-          {{ item.desc }}
-        </div>
-        <div class='item__cost'>
-          {{ item.cost }}₽
+  <transition name='fade' mode='out-in'>
+    <div class='main main__container'>
+      <div class='container container__title'>
+        Каталог
+      </div>
+      <div class='container__grid'>
+        <div v-for="(item, i) in items" :key='i' class='grid grid__item'>
+          <div class='grid item' @click='toItem(item.id)'>
+            <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />
+            <img v-if="!item.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='item.title' />
+            <div class='item__title'>
+              {{ item.title }}
+            </div>
+            <div class='item__category'>
+              {{ item.category }}
+            </div>
+            <div class='item__desc'>
+              {{ item.desc }}
+            </div>
+            <div class='item__cost'>
+              {{ item.cost }}₽
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </transition>
 </template>
 
 <script>
