@@ -71,6 +71,11 @@ export default {
       ],
     };
   },
+  head() {
+    return {
+      title: "Р.у. - Контакты"
+    };
+  },
 }
 </script>
 

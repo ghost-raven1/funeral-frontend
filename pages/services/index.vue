@@ -34,6 +34,11 @@ export default {
   data() {
     return {};
   },
+  head() {
+    return {
+      title: "Р.у. - Услуги"
+    };
+  },
   computed: {
     ...mapGetters({
       items: 'test/getServices',

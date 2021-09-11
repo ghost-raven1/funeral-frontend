@@ -4,7 +4,15 @@
 
 <script>
 export default {
-  name: 'index'
+  name: 'Index',
+  data() {
+    return {};
+  },
+  head() {
+    return {
+      title: "Р.у. - Корзина"
+    };
+  },
 }
 </script>
 

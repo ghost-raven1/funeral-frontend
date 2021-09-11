@@ -1,7 +1,9 @@
 <template>
   <div class='main main__container'>
-  1
-</div>
+    <div class='container container__title'>
+      Каталог
+    </div>
+  </div>
 </template>
 
 <script>

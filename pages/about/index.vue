@@ -4,7 +4,15 @@
 
 <script>
 export default {
-  name: 'Index'
+  name: 'Index',
+  data() {
+    return {};
+  },
+  head() {
+    return {
+      title: "Р.у. - О нас"
+    };
+  },
 }
 </script>
 
