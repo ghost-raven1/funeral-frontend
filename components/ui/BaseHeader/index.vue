@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a.nuxt-link-active {
+  color: indianred;
+}
 a {
   display: flex;
   text-decoration: none;
