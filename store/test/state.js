@@ -131,4 +131,14 @@ export default () => ({
       cost: '100',
     }
   ],
+  vacancies: [
+    {
+      id: '1',
+      title: 'Вакансия 1',
+      desc: 'Описание вакансии 1',
+      category: 'Категория',
+      imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
+      cost: '20000',
+    },
+  ],
 })
