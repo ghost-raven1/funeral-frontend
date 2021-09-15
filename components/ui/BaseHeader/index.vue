@@ -62,7 +62,7 @@ a {
     display: flex;
     flex-direction: row;
     align-self: center;
-    margin: 0 7% 0 0;
+    margin: 0 2% 0 0;
   }
   &__logo {
     color: #414141;
