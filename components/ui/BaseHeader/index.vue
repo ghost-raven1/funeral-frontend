@@ -69,7 +69,7 @@ a {
     align-items: center;
     display: flex;
     height: 60px;
-    width: 320px;
+    width: 220px;
     padding: 0 4px 4px;
     flex-direction: row;
     font-size: 18px;
