@@ -27,7 +27,7 @@ export default {
   height: 100vh;
   overflow-y: auto;
   &__template {
-    height: 60px;
+    height: 120px;
     display: grid;
     grid-template-rows: 60px 1fr 59px;
   }
@@ -47,7 +47,7 @@ export default {
     font-size: 14px;
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
+    margin: 60px auto;
   }
   &__header {
     height: 100%;

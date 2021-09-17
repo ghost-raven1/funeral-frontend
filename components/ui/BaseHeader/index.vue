@@ -3,8 +3,8 @@
     <div class="header__logo" @click="toMainPage()">
         Ритуальные услуги
     </div>
-    <div v-for='(item, i) in links' :key='i' class='header__navs'>
-      <nuxt-link :to='item.link'>{{ item.title }}
+    <div class='header__navs'>
+      <nuxt-link v-for='(item, i) in links' :key='i' :to='item.link'>{{ item.title }}
         <i v-if="item.icon" class="material-icons">
           {{item.icon}}
         </i>
@@ -35,14 +35,17 @@ export default {
 
 <style lang="scss" scoped>
 a.nuxt-link-active {
-  color: indianred;
+  color: #bbbaba;
 }
 a {
+  text-shadow: 1px 1px 2px black, 0 0 8px #ababab;
+  font-family: "Roboto", sans-serif;
   display: flex;
   text-decoration: none;
-  color: grey;
-  font-size: 18px;
-  font-weight: 500;
+  filter: brightness(0.9);
+  color: indianred;
+  font-size: 22px;
+  font-weight: 600;
   transition: .5s;
   align-items: center;
   &:hover {
@@ -50,22 +53,25 @@ a {
   }
 }
 .header {
-  height: 59px;
+  height: 120px;
   width: 100%;
   display: flex;
   position: fixed;
-  background: white;
+  filter: brightness(1.3);
+  background: url(../../../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
   box-shadow: 1px 1px 2px 0 grey;
   justify-content: space-between;
   z-index: 1;
   &__navs {
     display: flex;
     flex-direction: row;
-    align-self: center;
-    margin: 0 2% 0 0;
+    align-self: end;
+    gap: 20px;
+    margin: 0 5% 10px 0;
   }
   &__logo {
-    color: #414141;
+    font-family: "Droid Sans Mono Slashed", sans-serif;
+    color: #c0c0c0;
     align-items: center;
     display: flex;
     height: 60px;
@@ -77,7 +83,7 @@ a {
     cursor: pointer;
     transition: .5s;
     &:hover {
-      color: #5f5f5f;
+      color: #9f5252;
     }
   }
 }
