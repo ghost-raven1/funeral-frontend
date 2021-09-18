@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header__logo" @click="toMainPage()">
-        Ритуальные услуги
+        Центр ритуальных услуг
     </div>
     <div v-if="$route.path !== '/'" class='header__navs'>
       <nuxt-link v-for='(item, i) in links' :key='i' :to='item.link'>{{ item.title }}
@@ -35,15 +35,16 @@ export default {
 
 <style lang="scss" scoped>
 a.nuxt-link-active {
-  color: #bbbaba;
+  color: #0058cb;
+  text-shadow: 1px 1px 8px white;
 }
 a {
-  text-shadow: 1px 1px 2px black, 0 0 8px #ababab;
+  text-shadow: 1px 1px 2px #015b94, 0 0 30px #ababab;
   font-family: "Roboto", sans-serif;
   display: flex;
   text-decoration: none;
   filter: brightness(0.9);
-  color: indianred;
+  color: white;
   font-size: 22px;
   font-weight: 600;
   transition: .5s;
@@ -57,7 +58,7 @@ a {
   width: 100%;
   display: flex;
   position: fixed;
-  filter: brightness(1.3);
+  filter: brightness(1.1);
   background: url(../../../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
   justify-content: space-between;
   z-index: 1;
@@ -71,19 +72,20 @@ a {
   }
   &__logo {
     font-family: "Droid Sans Mono Slashed", sans-serif;
-    color: #c0c0c0;
+    color: gold;
+    text-shadow: 1px 1px 2px #015b94, 0 0 30px #ababab;
     align-items: center;
     display: flex;
     height: 60px;
     width: 220px;
-    padding: 0 4px 4px;
+    padding: 20px 4px 4px 16px;
     flex-direction: row;
-    font-size: 18px;
+    font-size: 30px;
     font-weight: 600;
     cursor: pointer;
     transition: .5s;
     &:hover {
-      color: #9f5252;
+      color: #ffc035;
     }
   }
 }
