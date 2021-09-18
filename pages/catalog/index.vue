@@ -89,8 +89,10 @@ export default {
     text-align: center;
     border-radius: 6px;
     transition: .5s;
+    background: white;
     &:hover {
       box-shadow: 2px 0 17px 0 rgba(0,0,0,0.15);
+      transform: scale(1.01);
     }
   }
 }
@@ -99,7 +101,7 @@ export default {
     margin-top: 15px;
     font-size: 18px;
     font-weight: 600;
-    color: #414141;
+    color: #f3f3f3;
   }
   &__grid {
     margin-top: 10px;

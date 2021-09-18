@@ -6,7 +6,9 @@
       </div>
       <div class="template__content">
         <div class="template__container">
-          <nuxt />
+          <div class='template margin'>
+            <nuxt />
+          </div>
         </div>
       </div>
       <div class="template__footer">
@@ -23,13 +25,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.margin {
+  margin: 0 20px;
+}
 .primary {
   height: 100vh;
   overflow-y: auto;
   &__template {
     height: 120px;
     display: grid;
-    grid-template-rows: 60px 1fr 59px;
+    grid-template-rows: 60px 1fr 60px;
   }
 }
 .template {
@@ -41,11 +46,10 @@ export default {
     width: 100%;
     overflow-y: auto;
     color: black;
-    background-color: white;
+    background: url(../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
   }
   &__container {
     font-size: 14px;
-    max-width: 1200px;
     width: 100%;
     margin: 60px auto;
   }

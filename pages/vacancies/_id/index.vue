@@ -131,7 +131,8 @@ export default {
     margin-top: 15px;
     font-size: 18px;
     font-weight: 600;
-    color: #414141;
+    color: #f3f3f3;
+    text-shadow: 1px 1px 2px black, 0 0 8px #ababab;
   }
 }
 .item {
@@ -145,7 +146,8 @@ export default {
   &__container {
     margin-top: 20px;
     max-height: 710px;
-    width: 100%;
+    width: 99%;
+    background: white;
     object-fit: cover;
     height: 100%;
     border: 1px solid #EFEFEFF9;

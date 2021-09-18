@@ -34,20 +34,21 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  height: 59px;
+  height: 60px;
   width: 100%;
   display: grid;
   justify-content: center;
   position: fixed;
-  background: gray;
-  box-shadow: 1px 1px 2px 0 grey;
+  filter: grayscale(100%) !important;
+  background: url(../../../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
   z-index: 1;
   &__copyrights {
     width: 100%;
     align-self: center;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 18px;
-    color: white;
+    color: #2d2d2d;
+    text-shadow: 1px 1px 2px white, 0 0 8px #ababab;
   }
 }
 

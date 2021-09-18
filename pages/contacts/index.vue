@@ -90,7 +90,8 @@ export default {
     margin-top: 15px;
     font-size: 18px;
     font-weight: 600;
-    color: #414141;
+    color: #f3f3f3;
+    text-shadow: 1px 1px 2px black, 0 0 8px #ababab;
   }
   &__grid {
     margin-top: 10px;

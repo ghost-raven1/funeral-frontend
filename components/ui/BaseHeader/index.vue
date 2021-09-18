@@ -3,7 +3,7 @@
     <div class="header__logo" @click="toMainPage()">
         Ритуальные услуги
     </div>
-    <div class='header__navs'>
+    <div v-if="$route.path !== '/'" class='header__navs'>
       <nuxt-link v-for='(item, i) in links' :key='i' :to='item.link'>{{ item.title }}
         <i v-if="item.icon" class="material-icons">
           {{item.icon}}
@@ -59,7 +59,6 @@ a {
   position: fixed;
   filter: brightness(1.3);
   background: url(../../../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
-  box-shadow: 1px 1px 2px 0 grey;
   justify-content: space-between;
   z-index: 1;
   &__navs {
@@ -67,6 +66,7 @@ a {
     flex-direction: row;
     align-self: end;
     gap: 20px;
+    transition: .5s;
     margin: 0 5% 10px 0;
   }
   &__logo {
