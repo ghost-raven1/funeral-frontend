@@ -39,7 +39,6 @@ export default {
   display: grid;
   justify-content: center;
   position: fixed;
-  filter: grayscale(100%) !important;
   background: url(../../../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
   z-index: 1;
   &__copyrights {

@@ -50,7 +50,7 @@ a {
   transition: .5s;
   align-items: center;
   &:hover {
-    color: darkgrey;
+    color: #204aff;
   }
 }
 .header {

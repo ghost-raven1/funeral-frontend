@@ -3,7 +3,7 @@
     <div class='container container__title'>
       Вакансия
     </div>
-    <div class='item item__container'>
+    <div v-if='step === 1' class='item item__container'>
       <img v-if="!vacancy.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='vacancy.title'>
       <img v-if="vacancy.imgUrl" class="item__img" :src='vacancy.imgUrl' :alt='vacancy.title'>
       <div class='item desc'>
@@ -28,10 +28,13 @@
             </div>
           </div>
           <div class='btn__container'>
-            <button class='desc btn__add'>Добавить в корзину</button>
+            <button class='desc btn__add' @click='toStepNext()'>Отправить заявку</button>
           </div>
         </div>
       </div>
+    </div>
+    <div v-if='step === 2' class='item item__form'>
+      <VacancyForm />
     </div>
   </div>
 </template>
@@ -43,6 +46,7 @@ export default {
   name: 'Index',
   data() {
     return {
+      step: 1,
       vacancy: {}
     }
   },
@@ -57,6 +61,9 @@ export default {
   methods: {
     async getService() {
       this.vacancy = await this.items.find(item => item.id === this.$route.params.id);
+    },
+    toStepNext() {
+      this.step +=1;
     },
   }
 }
