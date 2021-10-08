@@ -7,4 +7,5 @@ export default () => ({
     {title: 'О нас', link: '/about', icon: 'home'},
     {title: 'Корзина', link: '/cart', icon: 'shopping_cart'},
   ],
+  cart : [],
 })

@@ -14,7 +14,7 @@
                 {{product.title}}
               </div>
               <div class='desc__id'>
-                Актикул #{{product.id}}
+                Актикул #{{product.id}} Кол-во на складе: {{product.inStorage}} Общая стоимость: {{product.itemCommonPrice}}₽
               </div>
               <div class='desc__category'>
                 {{product.category}}
@@ -28,7 +28,10 @@
             </div>
           </div>
           <div class='btn__container'>
-            <button class='desc btn__add'>Добавить в корзину</button>
+            <button class='desc btn__add' @click="addProductToCart">
+              <span v-if='product.inCart === 0'>Добавить в корзину</span>
+              <span v-if='product.inCart > 0'>В корзине {{product.inCart}}шт.</span>
+            </button>
           </div>
         </div>
       </div>
@@ -57,8 +60,9 @@ export default {
   methods: {
     async getProduct() {
       this.product = await this.items.find(item => item.id === this.$route.params.id);
-      // eslint-disable-next-line no-console
-      console.log(this.product);
+    },
+    async addProductToCart() {
+      await this.$store.dispatch('header/addToCart', this.product);
     },
   }
 }

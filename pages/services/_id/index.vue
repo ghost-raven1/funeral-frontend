@@ -28,7 +28,10 @@
             </div>
           </div>
           <div class='btn__container'>
-            <button class='desc btn__add'>Добавить в корзину</button>
+            <button class='desc btn__add' @click="addServiceToCart">
+              <span v-if='service.inCart === 0'>Добавить услугу</span>
+              <span v-if='service.inCart === 1'>Услуга добавлена</span>
+            </button>
           </div>
         </div>
       </div>
@@ -57,8 +60,9 @@ export default {
   methods: {
     async getService() {
       this.service = await this.items.find(item => item.id === this.$route.params.id);
-      // eslint-disable-next-line no-console
-      console.log(this.service);
+    },
+    async addServiceToCart() {
+      await this.$store.dispatch('header/addToCart', this.service);
     },
   }
 }
