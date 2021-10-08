@@ -1,7 +1,7 @@
 export default () => ({
   services: [
     {
-      id: '1',
+      id: '31',
       title: 'Услуга 1',
       desc: 'Описание услуги 1',
       category: 'Категория',
@@ -13,7 +13,7 @@ export default () => ({
       type: 'service',
     },
     {
-      id: '2',
+      id: '60',
       title: 'Услуга 2',
       desc: 'Описание услуги 2',
       category: 'Категория',
@@ -25,7 +25,7 @@ export default () => ({
       type: 'service',
     },
     {
-      id: '3',
+      id: '330',
       title: 'Услуга 3',
       desc: 'Описание услуги 3',
       category: 'Категория',
@@ -37,7 +37,7 @@ export default () => ({
       type: 'service',
     },
     {
-      id: '4',
+      id: '42',
       title: 'Услуга 4',
       desc: 'Описание услуги 4',
       category: 'Категория',
@@ -49,7 +49,7 @@ export default () => ({
       type: 'service',
     },
     {
-      id: '5',
+      id: '30',
       title: 'Услуга 5',
       desc: 'Описание услуги 5',
       category: 'Категория',
@@ -61,7 +61,7 @@ export default () => ({
       type: 'service',
     },
     {
-      id: '6',
+      id: '1',
       title: 'Услуга 6',
       desc: 'Описание услуги 6',
       category: 'Категория',
@@ -73,7 +73,7 @@ export default () => ({
       type: 'service',
     },
     {
-      id: '7',
+      id: '10',
       title: 'Услуга 7',
       desc: 'Описание услуги 7',
       category: 'Категория',
@@ -85,7 +85,7 @@ export default () => ({
       type: 'service',
     },
     {
-      id: '8',
+      id: '84',
       title: 'Услуга 8',
       desc: 'Описание услуги 8',
       category: 'Категория',
@@ -99,7 +99,7 @@ export default () => ({
   ],
   products: [
     {
-      id: '1',
+      id: '92',
       title: 'Товар 1',
       desc: 'Описание товара 1',
       category: 'Категория',
@@ -111,7 +111,7 @@ export default () => ({
       type: 'product',
     },
     {
-      id: '2',
+      id: '78',
       title: 'Товар 2',
       desc: 'Описание товара 2',
       category: 'Категория',
@@ -123,7 +123,7 @@ export default () => ({
       type: 'product',
     },
     {
-      id: '3',
+      id: '33',
       title: 'Товар 3',
       desc: 'Описание товара 3',
       category: 'Категория',
@@ -135,7 +135,7 @@ export default () => ({
       type: 'product',
     },
     {
-      id: '4',
+      id: '15',
       title: 'Товар 4',
       desc: 'Описание товара 4',
       category: 'Категория',
@@ -147,7 +147,7 @@ export default () => ({
       type: 'product',
     },
     {
-      id: '5',
+      id: '700',
       title: 'Товар 5',
       desc: 'Описание товара 5',
       category: 'Категория',
@@ -159,7 +159,7 @@ export default () => ({
       type: 'product',
     },
     {
-      id: '6',
+      id: '436',
       title: 'Товар 6',
       desc: 'Описание товара 6',
       category: 'Категория',
@@ -171,7 +171,7 @@ export default () => ({
       type: 'product',
     },
     {
-      id: '7',
+      id: '247',
       title: 'Товар 7',
       desc: 'Описание товара 7',
       category: 'Категория',
@@ -183,7 +183,7 @@ export default () => ({
       type: 'product',
     },
     {
-      id: '8',
+      id: '358',
       title: 'Товар 8',
       desc: 'Описание товара 8',
       category: 'Категория',

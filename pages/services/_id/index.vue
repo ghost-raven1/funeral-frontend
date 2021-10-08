@@ -28,9 +28,10 @@
             </div>
           </div>
           <div class='btn__container'>
+            <button v-if='service.inCart > 0' @click='removeServiceFromCart'>-</button>
             <button class='desc btn__add' @click="addServiceToCart">
               <span v-if='service.inCart === 0'>Добавить услугу</span>
-              <span v-if='service.inCart === 1'>Услуга добавлена</span>
+              <span v-if='service.inCart > 0'>Услуга добавлена</span>
             </button>
           </div>
         </div>
@@ -63,6 +64,9 @@ export default {
     },
     async addServiceToCart() {
       await this.$store.dispatch('header/addToCart', this.service);
+    },
+    async removeServiceFromCart() {
+      await this.$store.dispatch('header/removeFromCart', this.service);
     },
   }
 }

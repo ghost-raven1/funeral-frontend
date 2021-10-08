@@ -28,6 +28,7 @@
             </div>
           </div>
           <div class='btn__container'>
+            <button v-if='product.inCart > 0' @click='removeProductFromCart'>-</button>
             <button class='desc btn__add' @click="addProductToCart">
               <span v-if='product.inCart === 0'>Добавить в корзину</span>
               <span v-if='product.inCart > 0'>В корзине {{product.inCart}}шт.</span>
@@ -63,6 +64,9 @@ export default {
     },
     async addProductToCart() {
       await this.$store.dispatch('header/addToCart', this.product);
+    },
+    async removeProductFromCart() {
+      await this.$store.dispatch('header/removeFromCart', this.product);
     },
   }
 }
