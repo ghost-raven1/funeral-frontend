@@ -7,7 +7,7 @@
     <div v-for='(item, i) in items' :key='i' class='grid grid__item'>
 
       <div v-if='item.phone' class='grid item'>
-        <a href=''>
+        <a :href='"tel:"+item.phone'>
           <div class='item'>
             <div class='item__title'>
               {{ item.title }}
@@ -20,7 +20,7 @@
       </div>
 
       <div v-if='item.email' class='grid item'>
-        <a>
+        <a :href='"mailto:"+item.email'>
           <div class='item'>
             <div class='item__title'>
               {{ item.title }}
