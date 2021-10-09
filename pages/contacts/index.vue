@@ -44,9 +44,22 @@
           </div>
         </a>
       </div>
-
     </div>
   </div>
+  <GmapMap
+    :center="{lat: 57.075840, lng: 86.229767}"
+    :zoom="16"
+    map-type-id="hybrid"
+    style="width: 100%; height: 600px"
+  >
+    <GmapMarker
+      v-for="(m, index) in markers"
+      :key="index"
+      :position="m.position"
+      :clickable="true"
+      @click="center=m.position"
+    />
+  </GmapMap>
 </div>
 </template>
 
@@ -68,6 +81,12 @@ export default {
           title: 'Адрес',
           address: 'с.Первомайское, ул.Первомайская, 99 кв 99'
         }
+      ],
+      center: { lat: 57.075840, lng: 86.229767 },
+      markers: [
+        {
+          position: {lat: 57.075840, lng: 86.229767 },
+        },
       ],
     };
   },

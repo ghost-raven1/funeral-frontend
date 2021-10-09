@@ -20,6 +20,7 @@ export default {
 
   plugins: [
     { src: '@plugins/injectComponents.js' },
+    { src: '@plugins/vue2-google-maps.js' },
   ],
 
   components: true,
@@ -50,5 +51,6 @@ export default {
     babel: {
       compact: false,
     },
+    vendor: ["vue2-google-maps"]
   }
 }
