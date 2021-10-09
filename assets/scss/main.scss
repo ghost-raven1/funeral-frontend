@@ -4,6 +4,59 @@ body {
   margin: 0 !important;
 }
 
+@-webkit-keyframes headerAnimation {
+  0%{background-position:0 44%}
+  50%{background-position:100% 57%}
+  100%{background-position:0 44%}
+}
+@-moz-keyframes headerAnimation {
+  0%{background-position:0 44%}
+  50%{background-position:100% 57%}
+  100%{background-position:0 44%}
+}
+@-o-keyframes headerAnimation {
+  0%{background-position:0 44%}
+  50%{background-position:100% 57%}
+  100%{background-position:0 44%}
+}
+@keyframes headerAnimation {
+  0%{background-position:0 44%}
+  50%{background-position:100% 57%}
+  100%{background-position:0 44%}
+}
+
+@-webkit-keyframes contentAnimation {
+  0%{background-position:0 45%}
+  50%{background-position:100% 58%}
+  100%{background-position:0 45%}
+}
+@-moz-keyframes contentAnimation {
+  0%{background-position:0 45%}
+  50%{background-position:100% 58%}
+  100%{background-position:0 45%}
+}
+@-o-keyframes contentAnimation {
+  0%{background-position:0 45%}
+  50%{background-position:100% 58%}
+  100%{background-position:0 45%}
+}
+@keyframes contentAnimation {
+  0%{background-position:0 45%}
+  50%{background-position:100% 58%}
+  100%{background-position:0 45%}
+}
+
+@keyframes show {
+  0% {
+    transform: scale(0.1);
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+    transform: scale(1);
+  }
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

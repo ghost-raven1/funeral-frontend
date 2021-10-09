@@ -209,34 +209,34 @@ export default () => ({
     {
       title: 'Услуги',
       url: 'services',
-      imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
+      imgUrl: '/images/services.jpg',
       desc: 'Наша компания предоставляет полный спектр услуг, связанный с погребением, включая оформление документов и доставку.\n' +
         'Подробнее, вы можете ознакомиться с ними в разделе "Услуги".'
     },
     {
       title: 'Каталог',
       url: 'catalog',
-      imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
+      imgUrl: '/images/catalog.jpg',
       desc: 'Наша компания предлагает огромный ассортимент товаров, связанных с погребением.\n' +
         'Подробнее, вы можете ознакомиться с ассортиментов в разделе "Каталог".'
     },
     {
       title: 'Контакты',
       url: 'contacts',
-      imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
+      imgUrl: '/images/contacts.jpg',
       desc: 'О том, как связаться с нами вы можете в разделе "Контакты".'
     },
     {
       title: 'Вакансии',
       url: 'vacancies',
-      imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
+      imgUrl: '/images/vacancies.jpg',
       desc: 'Мы всегда заинтересованы в поиске сотрудников. Все актуальные вакансии вы сможете увидеть в разделе "Вакансии".'
     },
-    {
-      title: 'О нас',
-      url: 'about',
-      imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
-      desc: 'Узнать о нашей компании вы сможете в разделе "О нас".'
-    },
+    // {
+    //   title: 'О нас',
+    //   url: 'about',
+    //   imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
+    //   desc: 'Узнать о нашей компании вы сможете в разделе "О нас".'
+    // },
   ],
 })

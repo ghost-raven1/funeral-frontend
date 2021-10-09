@@ -35,32 +35,32 @@ export default {
 
 <style lang="scss" scoped>
 a.nuxt-link-active {
-  color: #0058cb;
-  text-shadow: 1px 1px 8px white;
+  color: gold;
 }
 a {
   text-shadow: 1px 1px 2px #015b94, 0 0 30px #ababab;
   font-family: "Roboto", sans-serif;
   display: flex;
   text-decoration: none;
-  filter: brightness(0.9);
   color: white;
   font-size: 22px;
   font-weight: 600;
   transition: .5s;
   align-items: center;
+  opacity:0;
+  animation: show 1s .5s;
+  animation-fill-mode: forwards;
   &:hover {
-    color: #204aff;
+    color: gold;
   }
 }
 .header {
-  height: 120px;
+  height: 60px;
   width: 100%;
   display: flex;
   position: fixed;
-  filter: brightness(1.1);
-  background: url(../../../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
   justify-content: space-between;
+  background: transparent;
   z-index: 1;
   &__navs {
     display: flex;
@@ -68,7 +68,7 @@ a {
     align-self: end;
     gap: 20px;
     transition: .5s;
-    margin: 0 5% 10px 0;
+    margin: 0 5% 20px 0;
   }
   &__logo {
     font-family: "Droid Sans Mono Slashed", sans-serif;
@@ -77,10 +77,10 @@ a {
     align-items: center;
     display: flex;
     height: 60px;
-    width: 220px;
-    padding: 20px 4px 4px 16px;
+    width: 300px;
+    padding: 0 4px 4px 16px;
     flex-direction: row;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 600;
     cursor: pointer;
     transition: .5s;

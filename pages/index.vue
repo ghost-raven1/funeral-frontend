@@ -93,6 +93,9 @@ export default {
     border-radius: 6px;
     transition: .5s;
     background: white;
+    opacity:0;
+    animation: show 1s .5s;
+    animation-fill-mode: forwards;
     &:hover {
       transform: scale(1.01);
       box-shadow: 2px 0 17px 0 rgba(225, 225, 225, 0.98);
@@ -108,7 +111,7 @@ export default {
     text-shadow: 1px 1px 2px black, 0 0 8px #ababab;
   }
   &__grid {
-    margin-top: 10px;
+    margin: 10px 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;

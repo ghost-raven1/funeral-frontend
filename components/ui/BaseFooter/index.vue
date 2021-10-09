@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <div class='footer__copyrights'>Все права защищены. Ритуальные услуги, {{ year }}г.</div>
+    <div class='footer__copyrights'>Все права защищены. Центр ритуальных услуг, {{ year }}г.</div>
   </div>
 </template>
 
@@ -39,15 +39,19 @@ export default {
   display: grid;
   justify-content: center;
   position: fixed;
-  background: url(../../../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
+  background: linear-gradient(79deg, #6c6c6c, #2d96b6);
+  background-size: 400% 400%;
+  -webkit-animation: headerAnimation 55s ease infinite;
+  -moz-animation: headerAnimation 55s ease infinite;
+  -o-animation: headerAnimation 55s ease infinite;
+  animation: headerAnimation 55s ease infinite;
   z-index: 1;
   &__copyrights {
     width: 100%;
     align-self: center;
     font-weight: 600;
     font-size: 18px;
-    color: #2d2d2d;
-    text-shadow: 1px 1px 2px white, 0 0 8px #ababab;
+    color: white;
   }
 }
 

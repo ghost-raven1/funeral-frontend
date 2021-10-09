@@ -88,6 +88,9 @@ export default {
     border-radius: 6px;
     transition: .5s;
     background: white;
+    opacity:0;
+    animation: show 1s .5s;
+    animation-fill-mode: forwards;
     &:hover {
       box-shadow: 2px 0 17px 0 rgba(0,0,0,0.15);
       transform: scale(1.01);

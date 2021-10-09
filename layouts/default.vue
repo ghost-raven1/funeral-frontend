@@ -46,7 +46,12 @@ export default {
     width: 100%;
     overflow-y: auto;
     color: black;
-    background: url(../assets/images/header_background.jpg) no-repeat fixed 70% 30%;
+    background: radial-gradient(#787c7c, #1389ad, #059ecc, #60acc2, #787c7c);
+    background-size: 400% 400%;
+    -webkit-animation: contentAnimation 35s ease-in-out infinite;
+    -moz-animation: contentAnimation 35s ease-in-out infinite;
+    -o-animation: contentAnimation 35s ease-in-out infinite;
+    animation: contentAnimation 35s ease-in-out infinite;
   }
   &__container {
     font-size: 14px;
@@ -55,6 +60,12 @@ export default {
   }
   &__header {
     height: 100%;
+    background: linear-gradient(79deg, #858585, #2d96b6);
+    background-size: 400% 400%;
+    -webkit-animation: headerAnimation 55s ease infinite;
+    -moz-animation: headerAnimation 55s ease infinite;
+    -o-animation: headerAnimation 55s ease infinite;
+    animation: headerAnimation 55s ease infinite;
   }
   &__footer {
     height: 100%;
