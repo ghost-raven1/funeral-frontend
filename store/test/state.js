@@ -201,7 +201,7 @@ export default () => ({
       title: 'Вакансия 1',
       desc: 'Описание вакансии 1',
       category: 'Категория',
-      imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
+      imgUrl: '/images/vacancy.jpg',
       cost: '20000',
     },
   ],
@@ -232,11 +232,17 @@ export default () => ({
       imgUrl: '/images/vacancies.jpg',
       desc: 'Мы всегда заинтересованы в поиске сотрудников. Все актуальные вакансии вы сможете увидеть в разделе "Вакансии".'
     },
-    // {
-    //   title: 'О нас',
-    //   url: 'about',
-    //   imgUrl: 'https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg',
-    //   desc: 'Узнать о нашей компании вы сможете в разделе "О нас".'
-    // },
+    {
+      title: 'О нас',
+      url: 'about',
+      imgUrl: '/images/about.png',
+      desc: 'Узнать о нашей компании вы сможете в разделе "О нас".'
+    },
+    {
+      title: 'Ответы на вопросы',
+      url: 'questions',
+      imgUrl: '/images/questions.jpg',
+      desc: 'Узнать о нашей компании вы сможете в разделе "О нас".'
+    },
   ],
 })

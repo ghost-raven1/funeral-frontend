@@ -6,7 +6,7 @@
   <div class='container__grid'>
     <div v-for='(item, i) in items' :key='i' class='grid grid__item'>
 
-      <div v-if='item.phone' class='grid item'>
+      <div v-if='item.phone' class='grid'>
         <a :href='"tel:"+item.phone'>
           <div class='item'>
             <div class='item__title'>
@@ -19,7 +19,7 @@
         </a>
       </div>
 
-      <div v-if='item.email' class='grid item'>
+      <div v-if='item.email' class='grid'>
         <a :href='"mailto:"+item.email'>
           <div class='item'>
             <div class='item__title'>
@@ -32,8 +32,8 @@
         </a>
       </div>
 
-      <div v-if='item.address' class='grid item'>
-        <a>
+      <div v-if='item.address' class='grid'>
+        <a @click='openMap'>
           <div class='item'>
             <div class='item__title'>
               {{ item.title }}
@@ -46,7 +46,7 @@
       </div>
     </div>
   </div>
-  <Gmap />
+  <Gmap v-if='mapStatus'/>
 </div>
 </template>
 
@@ -66,9 +66,10 @@ export default {
         },
         {
           title: 'Адрес',
-          address: 'с.Первомайское, ул.Первомайская, 99 кв 99'
+          address: 'с.Первомайское, ул.Рабочая, 1а'
         }
       ],
+      mapStatus: false,
     };
   },
   head() {
@@ -76,13 +77,43 @@ export default {
       title: "Р.у. - Контакты"
     };
   },
+  methods: {
+    openMap() {
+      this.mapStatus = true;
+    },
+  },
 }
 </script>
 
 <style lang='scss' scoped>
+a {
+  text-decoration: none;
+}
 .item {
+  border: 1px solid gray;
+  background: white;
+  border-radius: 6px;
+  padding: 10px;
+  transition: .5s;
+  margin: 10px 0 10px 0;
+  transform: scale(0.9);
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    color: black;
+  }
+  &__info {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: #dac03e;
+  }
   &:hover {
     cursor: pointer;
+    transform: scale(0.95);
+    box-shadow: 2px 0 17px 0 rgba(225, 225, 225, 0.98);
   }
 }
 .container {

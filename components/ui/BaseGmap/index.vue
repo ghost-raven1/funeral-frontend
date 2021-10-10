@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class='map'>
   <GmapMap
     :center="{lat: 57.075840, lng: 86.229767}"
     :zoom="16"
@@ -33,6 +33,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang='scss' scoped>
+.map {
+  margin: 10px 0 10px 0;
+  opacity:0;
+  animation: show 1s .5s;
+  animation-fill-mode: forwards;
+}
 </style>
