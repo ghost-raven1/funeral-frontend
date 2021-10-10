@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <div class="header__logo" @click="toMainPage()">
+      <img class="header__logo_img" alt="" src='/images/golub1.png'>
         Центр ритуальных услуг
     </div>
     <div v-if="$route.path !== '/'" class='header__navs'>
@@ -84,6 +85,13 @@ a {
     font-weight: 600;
     cursor: pointer;
     transition: .5s;
+    &_img {
+      width: 60px;
+      height: 60px;
+      opacity:0;
+      animation: show 1s .5s;
+      animation-fill-mode: forwards;
+    }
     &:hover {
       color: #ffc035;
     }
