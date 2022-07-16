@@ -15,7 +15,7 @@
       <p class="card__desc">
         {{ cardData.desc }}
       </p>
-      <div class="card__price">
+      <div v-if="isDelete" class="card__price">
         {{ cardData.price }}
       </div>
     </div>
@@ -78,6 +78,7 @@ export default {
     height: 100%;
     object-fit: cover;
     object-position: 0 0;
+    border-radius: 4px 4px 0 0;
     &-wrap {
       width: 100%;
       height: 300px;
