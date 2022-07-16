@@ -5,16 +5,17 @@
           <div class='container__grid'>
             <div v-for="(item, i) in items" :key='i' class='grid grid__item'>
               <div class='grid item' @click='toItem(item.url)'>
-                <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />
-                <div class='item__title'>
-                  {{ item.title }}
-                </div>
-                <div class='item__category'>
-                  {{ item.category }}
-                </div>
-                <div class='item__desc'>
-                  {{ item.desc }}
-                </div>
+<!--                <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />-->
+<!--                <div class='item__title'>-->
+<!--                  {{ item.title }}-->
+<!--                </div>-->
+<!--                <div class='item__category'>-->
+<!--                  {{ item.category }}-->
+<!--                </div>-->
+<!--                <div class='item__desc'>-->
+<!--                  {{ item.desc }}-->
+<!--                </div>-->
+                <base-card :card-data="item" :is-delete="false" />
               </div>
             </div>
           </div>
@@ -111,7 +112,7 @@ export default {
   &__grid {
     margin: 10px 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     grid-gap: 15px;
   }

@@ -207,13 +207,6 @@ export default () => ({
   ],
   mainPage: [
     {
-      title: 'Услуги',
-      url: 'services',
-      imgUrl: '/images/services.jpg',
-      desc: 'Наша компания предоставляет полный спектр услуг, связанный с погребением, включая оформление документов и доставку.\n' +
-        'Подробнее, вы можете ознакомиться с ними в разделе "Услуги".'
-    },
-    {
       title: 'Каталог',
       url: 'catalog',
       imgUrl: '/images/catalog.jpg',
@@ -225,24 +218,6 @@ export default () => ({
       url: 'contacts',
       imgUrl: '/images/contacts.jpg',
       desc: 'О том, как связаться с нами вы можете в разделе "Контакты".'
-    },
-    {
-      title: 'Вакансии',
-      url: 'vacancies',
-      imgUrl: '/images/vacancies.jpg',
-      desc: 'Мы всегда заинтересованы в поиске сотрудников. Все актуальные вакансии вы сможете увидеть в разделе "Вакансии".'
-    },
-    // {
-    //   title: 'О нас',
-    //   url: 'about',
-    //   imgUrl: '/images/about.png',
-    //   desc: 'Узнать о нашей компании вы сможете в разделе "О нас".'
-    // },
-    {
-      title: 'Ответы на вопросы',
-      url: 'questions',
-      imgUrl: '/images/questions.jpg',
-      desc: 'Узнать о нашей компании вы сможете в разделе "О нас".'
     },
   ],
 })

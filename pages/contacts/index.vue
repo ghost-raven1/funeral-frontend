@@ -6,7 +6,6 @@
   <iframe
     src="https://yandex.ru/map-widget/v1/?um=constructor%3A3df55561aa72afc520e94fd613fb9947fceb680338754e111f400175d5c18f3f&amp;source=constructor"
     class="map"
-    frameborder="0"
   />
   <div class='container__grid'>
     <div v-for='(item, i) in items' :key='i' class='grid grid__item'>
@@ -134,11 +133,11 @@ a {
     text-shadow: 1px 1px 2px black, 0 0 8px #ababab;
   }
   &__grid {
-    margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     grid-gap: 10px;
+    margin: 10px;
   }
 }
 .main {
