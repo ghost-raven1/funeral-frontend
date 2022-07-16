@@ -48,10 +48,6 @@ export default {
     color: black;
     background: radial-gradient(#787c7c, #1389ad, #059ecc, #60acc2, #787c7c);
     background-size: 400% 400%;
-    -webkit-animation: contentAnimation 35s ease-in-out infinite;
-    -moz-animation: contentAnimation 35s ease-in-out infinite;
-    -o-animation: contentAnimation 35s ease-in-out infinite;
-    animation: contentAnimation 35s ease-in-out infinite;
   }
   &__container {
     font-size: 14px;

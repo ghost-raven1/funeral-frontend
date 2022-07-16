@@ -6,7 +6,6 @@
             <div v-for="(item, i) in items" :key='i' class='grid grid__item'>
               <div class='grid item' @click='toItem(item.url)'>
                 <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />
-                <img v-if="!item.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='item.title' />
                 <div class='item__title'>
                   {{ item.title }}
                 </div>
@@ -88,7 +87,6 @@ export default {
 }
 .grid {
   &__item {
-    border: 1px solid #EFEFEFF9;
     text-align: center;
     border-radius: 6px;
     transition: .5s;
@@ -98,7 +96,7 @@ export default {
     animation-fill-mode: forwards;
     &:hover {
       transform: scale(1.01);
-      box-shadow: 2px 0 17px 0 rgba(225, 225, 225, 0.98);
+      box-shadow: 1px 0 17px 0 rgba(225, 225, 225, 0.98);
     }
   }
 }

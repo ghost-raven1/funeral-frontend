@@ -78,7 +78,7 @@ a {
     align-items: center;
     display: flex;
     height: 60px;
-    width: 300px;
+    width: 100%;
     padding: 0 4px 4px 16px;
     flex-direction: row;
     font-size: 22px;

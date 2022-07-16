@@ -25,27 +25,6 @@ body {
   100%{background-position:0 44%}
 }
 
-@-webkit-keyframes contentAnimation {
-  0%{background-position:0 45%}
-  50%{background-position:100% 58%}
-  100%{background-position:0 45%}
-}
-@-moz-keyframes contentAnimation {
-  0%{background-position:0 45%}
-  50%{background-position:100% 58%}
-  100%{background-position:0 45%}
-}
-@-o-keyframes contentAnimation {
-  0%{background-position:0 45%}
-  50%{background-position:100% 58%}
-  100%{background-position:0 45%}
-}
-@keyframes contentAnimation {
-  0%{background-position:0 45%}
-  50%{background-position:100% 58%}
-  100%{background-position:0 45%}
-}
-
 @keyframes show {
   0% {
     transform: scale(0.1);

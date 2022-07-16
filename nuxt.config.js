@@ -15,30 +15,32 @@ export default {
   },
 
   css: [
-    '@/assets/scss/main.scss',
+    '@/assets/scss/main.scss'
   ],
 
   plugins: [
-    { src: '@plugins/injectComponents.js' },
-    { src: '@plugins/vue2-google-maps.js' },
+    { src: '@plugins/injectComponents.js' }
   ],
 
   components: true,
 
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv',
+    '@nuxtjs/dotenv'
   ],
+
+  styleResources: {
+    scss: ['./assets/scss/resources.scss']
+  },
 
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    'nuxt-material-design-icons-iconfont',
+    'nuxt-material-design-icons-iconfont'
   ],
 
   axios: {
-    baseURL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL
   },
 
   pwa: {
@@ -49,8 +51,7 @@ export default {
 
   build: {
     babel: {
-      compact: false,
+      compact: false
     },
-    vendor: ["vue2-google-maps"]
   }
 }

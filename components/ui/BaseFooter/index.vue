@@ -1,6 +1,8 @@
 <template>
   <div class="footer">
-    <div class='footer__copyrights'>Все права защищены. Центр ритуальных услуг, {{ year }}г.</div>
+    <div class='footer__copyrights'>
+      Все права защищены. Центр ритуальных услуг, {{ new Date().getFullYear() }} г.
+    </div>
   </div>
 </template>
 
@@ -9,25 +11,16 @@ import { mapGetters } from 'vuex'
 
 export default {
   data () {
-    return {
-      year: '',
-    }
+    return {}
   },
   computed: {
     ...mapGetters({})
   },
-  mounted () {
-    this.getFullYear();
-  },
+  mounted () {},
   methods: {
     toMainPage (){
       this.$router.push('/')
     },
-    getFullYear() {
-      const date = new Date();
-      this.year = date.getFullYear();
-      return this.year
-    }
   }
 }
 </script>

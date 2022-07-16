@@ -3,6 +3,11 @@
   <div class='container container__title'>
     Контакты
   </div>
+  <iframe
+    src="https://yandex.ru/map-widget/v1/?um=constructor%3A3df55561aa72afc520e94fd613fb9947fceb680338754e111f400175d5c18f3f&amp;source=constructor"
+    class="map"
+    frameborder="0"
+  />
   <div class='container__grid'>
     <div v-for='(item, i) in items' :key='i' class='grid grid__item'>
 
@@ -86,6 +91,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.map {
+  width: 100%;
+  height: 500px;
+}
 a {
   text-decoration: none;
 }
