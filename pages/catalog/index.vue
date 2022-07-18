@@ -5,9 +5,9 @@
         Каталог
       </div>
       <div class="container__nav">
-        <BaseBtn mode="text" title="Все" @click="tab = 'Все'" />
-        <BaseBtn mode="text" title="Товары" @click="tab = 'Товары'" />
-        <BaseBtn mode="text" title="Услуги" @click="tab = 'Услуги'" />
+        <BaseBtn mode="text" title="Все" :class="{'btn_selected': tab === 'Все' }" @click="tab = 'Все'" />
+        <BaseBtn mode="text" title="Товары" :class="{'btn_selected': tab === 'Товары' }" @click="tab = 'Товары'" />
+        <BaseBtn mode="text" title="Услуги" :class="{'btn_selected': tab === 'Услуги' }" @click="tab = 'Услуги'" />
       </div>
       <div v-if="tab === 'Все' || tab === 'Товары'" class="nav nav__container">
         <h2 class="nav__title">
@@ -19,6 +19,7 @@
               <img
                 v-if="item.attributes?.cover.data"
                 class="item__img"
+                loading="lazy"
                 :src='item.attributes?.cover.data?.attributes?.url'
                 :alt='item.attributes?.cover.data?.attributes?.name' />
               <img v-else class="item__img" src='~/assets/images/unit.png' :alt='item.attributes?.cover.data?.attributes?.name' />
@@ -52,6 +53,7 @@
               <img
                 v-if="item.attributes?.cover.data"
                 class="item__img"
+                loading="lazy"
                 :src='item.attributes?.cover.data?.attributes?.url'
                 :alt='item.attributes?.cover.data?.attributes?.name' />
               <img v-else class="item__img" src='~/assets/images/unit.png' :alt='item.attributes?.cover.data?.attributes?.name' />
@@ -115,6 +117,9 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.btn_selected {
+  background: #00AA5B;
+}
 .nav {
   &__container {
     margin-top: 20px;
@@ -147,7 +152,7 @@ export default {
   &__grid {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     grid-gap: 10px;
   }
@@ -158,9 +163,8 @@ export default {
   }
   &__img {
     width: 100%;
-    height: 130px;
     border-radius: 6px 6px 0 0;
-    object-fit: cover;
+    object-fit: fill;
   }
   &__title {
     font-weight: 500;
