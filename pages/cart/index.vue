@@ -24,6 +24,7 @@ export default {
     ...mapGetters({
       cartItems: 'header/getCartData',
     }),
+    // TODO: Доработать корзину
   },
 }
 </script>

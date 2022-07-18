@@ -52,6 +52,6 @@ export default {
   build: {
     babel: {
       compact: false
-    },
+    }
   }
 }

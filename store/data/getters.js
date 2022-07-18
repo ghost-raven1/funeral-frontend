@@ -1,3 +1,6 @@
 export default {
-  // getLocations: (state) => state.locations,
+  getProducts: (state) => state.products,
+  getProduct: (state) => state.product,
+  getServices: (state) => state.services,
+  getService: (state) => state.service,
 };

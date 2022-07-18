@@ -1,25 +1,75 @@
 <template>
   <transition name='fade' mode='out-in'>
-    <div class='main main__container'>
+    <div class='catalog catalog__container'>
       <div class='container container__title'>
         Каталог
       </div>
-      <div class='container__grid'>
-        <div v-for="(item, i) in items" :key='i' class='grid grid__item'>
-          <div class='grid item' @click='toItem(item.id)'>
-            <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />
-            <img v-if="!item.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='item.title' />
-            <div class='item__title'>
-              {{ item.title }}
+      <div class="container__nav">
+        <BaseBtn mode="text" title="Все" @click="tab = 'Все'" />
+        <BaseBtn mode="text" title="Товары" @click="tab = 'Товары'" />
+        <BaseBtn mode="text" title="Услуги" @click="tab = 'Услуги'" />
+      </div>
+      <div v-if="tab === 'Все' || tab === 'Товары'" class="nav nav__container">
+        <h2 class="nav__title">
+          Товары
+        </h2>
+        <div class='container__grid'>
+          <div v-for="(item, i) in products" :key='i' class='grid grid__item'>
+            <div class='grid item' @click='toItem(item.id, "товар")'>
+              <img
+                v-if="item.attributes?.cover.data"
+                class="item__img"
+                :src='item.attributes?.cover.data?.attributes?.url'
+                :alt='item.attributes?.cover.data?.attributes?.name' />
+              <img v-else class="item__img" src='~/assets/images/unit.png' :alt='item.attributes?.cover.data?.attributes?.name' />
+              <div class='item__title'>
+                {{ item.attributes?.title }}
+              </div>
+              <div
+                v-for="(category, j) in item.attributes?.Kategorii?.data"
+                :key="j" class='item__category'
+              >
+                {{ category.attributes?.Name }}
+              </div>
+              <div class='item__desc'>
+                {{ item.attributes?.description }}
+              </div>
+              <div class='item__cost'>
+                {{ item.attributes?.price }}₽
+              </div>
             </div>
-            <div class='item__category'>
-              {{ item.category }}
-            </div>
-            <div class='item__desc'>
-              {{ item.desc }}
-            </div>
-            <div class='item__cost'>
-              {{ item.cost }}₽
+          </div>
+        </div>
+      </div>
+      <div v-if="tab === 'Все' || tab === 'Услуги'" class="nav nav__container">
+        <h2 class="nav__title">
+          Услуги
+        </h2>
+<!--        TODO: Добавить стили исправить верстку -->
+        <div class='container__grid'>
+          <div v-for="(item, i) in services" :key='i' class='grid grid__item'>
+            <div class='grid item' @click='toItem(item.id, "услуги")'>
+              <img
+                v-if="item.attributes?.cover.data"
+                class="item__img"
+                :src='item.attributes?.cover.data?.attributes?.url'
+                :alt='item.attributes?.cover.data?.attributes?.name' />
+              <img v-else class="item__img" src='~/assets/images/unit.png' :alt='item.attributes?.cover.data?.attributes?.name' />
+              <div class='item__title'>
+                {{ item.attributes?.name }}
+              </div>
+              <div
+                v-for="(category, j) in item.attributes?.tipy_uslugs?.data"
+                :key="j" class='item__category'
+              >
+                {{ category.attributes?.name }}
+              </div>
+              <div class='item__desc'>
+                {{ item.attributes?.description }}
+              </div>
+              <div class='item__cost'>
+                {{ item.attributes?.price }}₽
+              </div>
             </div>
           </div>
         </div>
@@ -34,7 +84,9 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Catalog',
   data() {
-    return {};
+    return {
+      tab: 'Все'
+    };
   },
   head() {
     return {
@@ -43,25 +95,70 @@ export default {
   },
   computed: {
     ...mapGetters({
-      items: 'test/getProducts',
+      products: 'data/getProducts',
+      services: 'data/getServices'
     }),
   },
+  async mounted() {
+    await this.$store.dispatch('data/getProducts');
+    await this.$store.dispatch('data/getServices')
+  },
   methods: {
-    toItem(id) {
-      this.$router.push(`/catalog/${id}`);
+    // TODO: Добавить миксины
+    // TODO: Доработать внешний вид страницы
+    toItem(id, type) {
+      this.$route.params.type = type;
+      this.$router.push(type === 'услуги' ? `/services/${id}` : `/products/${id}`);
     },
   },
 }
 </script>
 
 <style lang='scss' scoped>
+.nav {
+  &__container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &__title {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f3f3f3;
+  }
+}
+.catalog {
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
+}
+.container {
+  &__title {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f3f3f3;
+  }
+  &__nav {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &__grid {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+  }
+}
 .item {
   &:hover {
     cursor: pointer;
   }
   &__img {
     width: 100%;
-    height: 125px;
+    height: 130px;
     border-radius: 6px 6px 0 0;
     object-fit: cover;
   }
@@ -97,27 +194,6 @@ export default {
       box-shadow: 2px 0 17px 0 rgba(0,0,0,0.15);
       transform: scale(1.01);
     }
-  }
-}
-.container {
-  &__title {
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #f3f3f3;
-  }
-  &__grid {
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: auto;
-    grid-gap: 10px;
-  }
-}
-.main {
-  &__container {
-    width: 100%;
-    height: 100%;
   }
 }
 

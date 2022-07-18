@@ -18,6 +18,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  name: 'BaseHeader',
   data () {
     return {}
   },
@@ -27,6 +28,7 @@ export default {
     })
   },
   methods: {
+    // TODO: добавить возможность редактировать название сайта
     toMainPage (){
       this.$router.push('/')
     },

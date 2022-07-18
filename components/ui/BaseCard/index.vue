@@ -30,6 +30,14 @@ export default {
       type: Boolean,
       default: false
     },
+    fromApi: {
+      type: Boolean,
+      default: false
+    },
+    isServices: {
+      type: Boolean,
+      default: false
+    },
     cardData: {
       type: Object,
       default: () => {

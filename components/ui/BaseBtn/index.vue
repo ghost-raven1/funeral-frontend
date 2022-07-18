@@ -48,7 +48,8 @@ export default {
 
 <style lang="scss" scoped>
 .btn {
-  border-radius: 10px;
+  border: none;
+  border-radius: 6px;
   font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -56,8 +57,12 @@ export default {
   line-height: 15px;
   padding: 10px;
   color: #FFFFFF;
-  background: #4cb457;
+  background: #069cea;
   transition: .5s;
+  &:hover {
+    background: #0083C7;
+    cursor: pointer;
+  }
   &_disabled {
     background: gray;
     color: #e7dfdf;

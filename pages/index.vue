@@ -5,16 +5,6 @@
           <div class='container__grid'>
             <div v-for="(item, i) in items" :key='i' class='grid grid__item'>
               <div class='grid item' @click='toItem(item.url)'>
-<!--                <img v-if="item.imgUrl" class="item__img" :src='item.imgUrl' :alt='item.title' />-->
-<!--                <div class='item__title'>-->
-<!--                  {{ item.title }}-->
-<!--                </div>-->
-<!--                <div class='item__category'>-->
-<!--                  {{ item.category }}-->
-<!--                </div>-->
-<!--                <div class='item__desc'>-->
-<!--                  {{ item.desc }}-->
-<!--                </div>-->
                 <base-card :card-data="item" :is-delete="false" />
               </div>
             </div>
@@ -43,6 +33,9 @@ export default {
     }),
   },
   methods: {
+    // TODO: Добавить миксины
+    // TODO: Доработать внешний вид страницы
+    // TODO: Добавить возможность редактировать страничку, но не вкладки
     toItem(url) {
       this.$router.push(`/${url}/`);
     },
