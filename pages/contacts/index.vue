@@ -59,6 +59,7 @@ export default {
   name: 'Index',
   data() {
     return {
+      // TODO: Добавить возможность добавления филиалов
       items: [
         {
           title: 'Телефон',
