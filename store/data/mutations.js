@@ -1,4 +1,7 @@
 export default {
+  setCommon(state, data) {
+    state.common = data.data
+  },
   setProducts(state, data) {
     state.products = data.data;
   },

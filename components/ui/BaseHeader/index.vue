@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__logo" @click="toMainPage()">
       <img class="header__logo_img" alt="" src='/images/golub1.png'>
-        Центр ритуальных услуг
+      {{ common.attributes?.site_name }}
     </div>
     <div v-if="$route.path !== '/'" class='header__navs'>
       <nuxt-link v-for='(item, i) in links' :key='i' :to='item.link'>{{ item.title }}
@@ -24,8 +24,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      links: 'header/getLinks'
+      links: 'header/getLinks',
+      common: 'data/getCommon'
     })
+  },
+  async mounted() {
+    await this.$store.dispatch('data/getCommon')
   },
   methods: {
     // TODO: добавить возможность редактировать название сайта

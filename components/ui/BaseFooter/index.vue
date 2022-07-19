@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class='footer__copyrights'>
-      Все права защищены. Центр ритуальных услуг, {{ new Date().getFullYear() }} г.
+      Все права защищены. {{ common.attributes?.site_name }}, {{ new Date().getFullYear() }} г.
     </div>
   </div>
 </template>
@@ -10,11 +10,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  name: 'BaseFooter',
   data () {
     return {}
   },
   computed: {
-    ...mapGetters({})
+    ...mapGetters({
+      common: 'data/getCommon'
+    })
   },
   mounted () {},
   methods: {

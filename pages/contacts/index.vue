@@ -50,7 +50,7 @@
       </div>
     </div>
   </div>
-  <Gmap v-if='mapStatus'/>
+<!--  <Gmap v-if='mapStatus'/>-->
 </div>
 </template>
 
@@ -74,7 +74,7 @@ export default {
           address: 'с.Первомайское, ул.Рабочая, 1а'
         }
       ],
-      mapStatus: false,
+      // mapStatus: true,
     };
   },
   head() {

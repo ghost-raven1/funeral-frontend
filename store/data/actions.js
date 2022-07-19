@@ -1,4 +1,15 @@
 export default {
+  async getCommon({ commit }, id) {
+    try {
+      const response = await this.$axios.$get(`/obshhee?populate=*`);
+      commit('setCommon', response);
+      return true;
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('error common get');
+      return false;
+    }
+  },
   async getProduct({ commit }, id) {
     try {
       const response = await this.$axios.$get(`/tovars/${id}?populate=*`);
