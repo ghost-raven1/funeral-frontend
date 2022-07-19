@@ -1,4 +1,5 @@
 export default {
+  getBranches: (state) => state.branches,
   getProducts: (state) => state.products,
   getProduct: (state) => state.product,
   getServices: (state) => state.services,

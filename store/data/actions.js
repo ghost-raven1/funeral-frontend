@@ -1,5 +1,16 @@
 export default {
-  async getCommon({ commit }, id) {
+  async getBranches({ commit }, id) {
+    try {
+      const response = await this.$axios.$get(`/filials?populate=*`);
+      commit('setBranches', response);
+      return true;
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('error branches get');
+      return false;
+    }
+  },
+  async getCommon({ commit }) {
     try {
       const response = await this.$axios.$get(`/obshhee?populate=*`);
       commit('setCommon', response);

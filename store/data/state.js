@@ -3,5 +3,6 @@ export default () => ({
   product: {},
   services: [],
   service: {},
-  common: {}
+  common: {},
+  branches: []
 })

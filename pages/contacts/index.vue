@@ -3,78 +3,70 @@
   <div class='container container__title'>
     Контакты
   </div>
-  <iframe
-    src="https://yandex.ru/map-widget/v1/?um=constructor%3A3df55561aa72afc520e94fd613fb9947fceb680338754e111f400175d5c18f3f&amp;source=constructor"
-    class="map"
-  />
-  <div class='container__grid'>
-    <div v-for='(item, i) in items' :key='i' class='grid grid__item'>
+    <div v-for='(item, i) in branches' :key='i' class='grid grid__item'>
 
-      <div v-if='item.phone' class='grid'>
-        <a :href='"tel:"+item.phone'>
-          <div class='item'>
-            <div class='item__title'>
-              {{ item.title }}
-            </div>
-            <div class='item__info'>
-              {{ item.phone }}
-            </div>
-          </div>
-        </a>
+      <div v-if="item.attributes?.title" class="grid__item-title">
+        {{ item.attributes?.title }}
       </div>
 
-      <div v-if='item.email' class='grid'>
-        <a :href='"mailto:"+item.email'>
-          <div class='item'>
-            <div class='item__title'>
-              {{ item.title }}
-            </div>
-            <div class='item__info'>
-              {{ item.email }}
-            </div>
-          </div>
-        </a>
-      </div>
+      <iframe
+        v-if='mapStatus'
+        :src="item.attributes?.map_link"
+        class="map"
+      />
 
-      <div v-if='item.address' class='grid'>
+      <div v-if='item.attributes?.address' class='grid'>
         <a @click='openMap'>
           <div class='item'>
             <div class='item__title'>
-              {{ item.title }}
+              Адрес
             </div>
             <div class='item__info'>
-              {{ item.address }}
+              {{ item.attributes?.address }}
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div v-if='item.attributes?.phone' class='grid'>
+        <a :href='"tel:"+item.attributes?.phone'>
+          <div class='item'>
+            <div class='item__title'>
+              Телефон
+            </div>
+            <div class='item__info'>
+              {{ item.attributes?.phone }}
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div v-if='item.attributes?.email' class='grid'>
+        <a :href='"mailto:"+item.attributes?.email'>
+          <div class='item'>
+            <div class='item__title'>
+              Почта
+            </div>
+            <div class='item__info'>
+              {{ item.attributes?.email }}
             </div>
           </div>
         </a>
       </div>
     </div>
-  </div>
 <!--  <Gmap v-if='mapStatus'/>-->
 </div>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
-  name: 'Index',
+  name: 'ContactsPage',
   data() {
     return {
       // TODO: Добавить возможность добавления филиалов
-      items: [
-        {
-          title: 'Телефон',
-          phone: '+7-999-990-99-99'
-        },
-        {
-          title: 'Email',
-          email: 'example@example.ru'
-        },
-        {
-          title: 'Адрес',
-          address: 'с.Первомайское, ул.Рабочая, 1а'
-        }
-      ],
-      // mapStatus: true,
+      mapStatus: false,
     };
   },
   head() {
@@ -82,15 +74,35 @@ export default {
       title: "Р.у. - Контакты"
     };
   },
+  computed: {
+    ...mapGetters({
+      branches: 'data/getBranches'
+    })
+  },
+  mounted() {
+    this.$store.dispatch('data/getBranches')
+  },
   methods: {
     openMap() {
-      this.mapStatus = true;
+      this.mapStatus = !this.mapStatus;
     },
   },
 }
 </script>
 
 <style lang='scss' scoped>
+.grid__item {
+  &-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #f3f3f3;
+    text-shadow: 1px 1px 2px black, 0 0 8px #ababab;
+  }
+}
 .map {
   width: 100%;
   height: 500px;

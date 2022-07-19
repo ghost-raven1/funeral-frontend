@@ -1,6 +1,9 @@
 export default {
+  setBranches(state, data) {
+    state.branches = data.data;
+  },
   setCommon(state, data) {
-    state.common = data.data
+    state.common = data.data;
   },
   setProducts(state, data) {
     state.products = data.data;
