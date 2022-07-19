@@ -2,7 +2,7 @@
   <div class="primary">
     <div class="primary__template template">
       <div class="template__header">
-        <Header />
+        <BaseHeader />
       </div>
       <div class="template__content">
         <div class="template__container">
@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="template__footer">
-        <Footer />
+        <BaseFooter />
       </div>
     </div>
   </div>

@@ -7,9 +7,9 @@ import VacancyForm from '~/components/ui/forms/vacancy';
 import BaseBtn from "~/components/ui/BaseBtn";
 import BaseCard from "~/components/ui/BaseCard";
 
-Vue.component('Header', BaseHeader);
-Vue.component('Footer', BaseFooter);
-Vue.component('Gmap', BaseGmap);
+Vue.component('BaseHeader', BaseHeader);
+Vue.component('BaseFooter', BaseFooter);
+Vue.component('BaseGmap', BaseGmap);
 Vue.component('VacancyForm', VacancyForm);
 Vue.component('BaseBtn', BaseBtn);
 Vue.component('BaseCard', BaseCard);

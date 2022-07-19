@@ -4,39 +4,49 @@
       Каталог
     </div>
     <div class='item item__container'>
-      {{ product }}
-<!--      <img v-if="!product.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='product.title'>-->
-<!--      <img v-if="product.imgUrl" class="item__img" :src='product.imgUrl' :alt='product.title'>-->
-<!--      <div class='item desc'>-->
-<!--        <div class='desc desc__container'>-->
-<!--          <div>-->
-<!--            <div class='desc container__duo'>-->
-<!--              <div class='desc__title'>-->
-<!--                {{product.title}}-->
-<!--              </div>-->
-<!--              <div class='desc__id'>-->
-<!--                Актикул #{{product.id}} Кол-во на складе: {{product.inStorage}} Общая стоимость: {{product.itemCommonPrice}}₽-->
-<!--              </div>-->
-<!--              <div class='desc__category'>-->
-<!--                {{product.category}}-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class='desc__desc'>-->
-<!--              {{product.desc}}-->
-<!--            </div>-->
-<!--            <div class='desc__cost'>-->
-<!--              {{product.cost}}₽-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class='btn__container'>-->
-<!--            <button v-if='product.inCart > 0' @click='removeProductFromCart'>-</button>-->
-<!--            <button class='desc btn__add' @click="addProductToCart">-->
-<!--              <span v-if='product.inCart === 0'>Добавить в корзину</span>-->
-<!--              <span v-if='product.inCart > 0'>В корзине {{product.inCart}}шт.</span>-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+<!--      {{ product.attributes }}-->
+<!--      TODO: перенести галерею из портфолио-->
+<!--        <galleryImage v-for="(item, i) in product.attributes?.images?.data" :key="i" :src="require(item.attributes?.placeholder)" alt="Forest" />-->
+<!--      TODO: Доработать добавление в корзину и удаление из нее-->
+      <div class='item desc'>
+        <div class='desc desc__container'>
+          <div>
+            <div class='desc container__duo'>
+              <div v-if="product.attributes?.title" class='desc__title'>
+                {{ product.attributes?.title }}
+              </div>
+              <div class='desc__id'>
+                Кол-во на складе: {{ product.attributes?.count }}
+<!--                TODO: Общая стоимость -->
+<!--                Общая стоимость: {{product.itemCommonPrice}}₽-->
+              </div>
+              <div
+                v-for="(item, i) in product.attributes?.Kategorii?.data"
+                :key="i"
+                class='desc__category'
+              >
+                {{ item.attributes?.Name }}
+              </div>
+            </div>
+            <div
+              v-if="product.attributes?.description"
+              class='desc__desc'
+            >
+              {{ product.attributes?.description }}
+            </div>
+            <div class='desc__cost'>
+              {{ product.attributes?.price }}₽
+            </div>
+          </div>
+          <div class='btn__container'>
+            <button v-if='inCart > 0' @click='removeProductFromCart'>-</button>
+            <button class='desc btn__add' @click="addProductToCart">
+              <span v-if='inCart === 0'>Добавить в корзину</span>
+              <span v-if='inCart > 0'>В корзине {{product.inCart}}шт.</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,7 +57,9 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Index',
   data() {
-    return {}
+    return {
+      inCart: 0
+    }
   },
   computed: {
     ...mapGetters({
@@ -61,12 +73,12 @@ export default {
   methods: {
     // TODO: Добавить миксины
     // TODO: Доработать внешний вид страницы
-    // async addProductToCart() {
-    //   await this.$store.dispatch('header/addToCart', this.product);
-    // },
-    // async removeProductFromCart() {
-    //   await this.$store.dispatch('header/removeFromCart', this.product);
-    // },
+    async addProductToCart() {
+      await this.$store.dispatch('header/addToCart', this.product.attributes);
+    },
+    async removeProductFromCart() {
+      await this.$store.dispatch('header/removeFromCart', this.product.attributes);
+    },
   }
 }
 </script>
