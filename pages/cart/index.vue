@@ -8,6 +8,7 @@
     <!--TODO: Заменить все цвета на цвета из палитры vars -->
     <!-- Добавить мобильный аваптив -->
     <!--TODO: Добавить иконки для кнопок -->
+    <!-- TODO: Добавить очистку формы и корзины после оформления заказа -->
     <div
       v-if="tovars.length"
       class='container container__title'
@@ -131,7 +132,7 @@
     </div>
 
     <div class='container container__title'>
-      Общая стоимость: {{ totalPrice }}Р
+      Общая стоимость: {{ tovars.length !== 0 || uslugas.length !== 0 ? totalPrice : 0 }}Р
       <button
         :disabled="tovars.length === 0 && uslugas.length === 0"
         @click="isShowCartForm = !isShowCartForm"
@@ -230,11 +231,13 @@ export default {
       this.$store.dispatch('header/deleteTovarFromCart', i)
       this.$store.dispatch('header/deleteTovarIdFromCart', i)
       this.priceTovar()
+      this.$toast.success('Товар успешно удален из корзины!');
     },
     removeFromCartUsluga(i) {
       this.$store.dispatch('header/deleteUslugaFromCart', i)
       this.$store.dispatch('header/deleteUslugaIdFromCart', i)
       this.priceUslugas()
+      this.$toast.success('Услуга успешно удалена из корзины!');
     },
   }
 }

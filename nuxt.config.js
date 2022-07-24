@@ -37,7 +37,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
-    'nuxt-material-design-icons-iconfont'
+    'nuxt-material-design-icons-iconfont',
+    "vue-toastification/nuxt"
   ],
 
   axios: {

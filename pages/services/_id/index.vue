@@ -107,6 +107,7 @@ export default {
       this.itemsArr.push(item)
       const finalItemsArr = JSON.parse(JSON.stringify(this.itemsArr))
       await this.$store.dispatch('header/addUslugaToCart', finalItemsArr);
+      this.$toast.success(`Услуга ${item.attributes?.name} успешно добавлена в корзину!`);
     },
   }
 }

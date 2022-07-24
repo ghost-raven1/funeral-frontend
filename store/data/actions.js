@@ -4,6 +4,7 @@ export default {
       // eslint-disable-next-line no-console
       console.log('data zakaz', data)
       await this.$axios.$post(`/zakazs`, data);
+      this.$toast.success(`Заказ успешно оформлен! Ждите звонка оператора!`);
       return true;
     } catch (e) {
       // eslint-disable-next-line no-console

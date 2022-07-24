@@ -112,6 +112,7 @@ export default {
       this.itemsArr.push(item)
       const finalItemsArr = JSON.parse(JSON.stringify(this.itemsArr))
       await this.$store.dispatch('header/addTovarToCart', finalItemsArr);
+      this.$toast.success(`Товар ${item.attributes?.title} успешно добавлен в корзину!`);
     },
   }
 }
