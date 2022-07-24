@@ -1,49 +1,58 @@
 <template>
-  <div class='catalog catalog__container'>
+  <div class='catalog catalog__container items'>
     <div class='container container__title'>
       Каталог
     </div>
-    <div class='item item__container'>
-<!--      {{ product.attributes }}-->
-<!--      TODO: перенести галерею из портфолио-->
-<!--        <galleryImage v-for="(item, i) in product.attributes?.images?.data" :key="i" :src="require(item.attributes?.placeholder)" alt="Forest" />-->
-<!--      TODO: Доработать добавление в корзину и удаление из нее-->
-      <div class='item desc'>
-        <div class='desc desc__container'>
-          <div>
-            <div class='desc container__duo'>
-              <div v-if="product.attributes?.title" class='desc__title'>
-                {{ product.attributes?.title }}
-              </div>
-              <div class='desc__id'>
-                Кол-во на складе: {{ product.attributes?.count }}
-<!--                TODO: Общая стоимость -->
-<!--                Общая стоимость: {{product.itemCommonPrice}}₽-->
+    <div class="items__item">
+      <div class='item item__container'>
+
+        <transition name="fade" mode="out-in" appear>
+          <div class="about__common-right">
+            <BaseCarousel
+              v-if="sliderItems"
+              :carousel-data="sliderItems"
+            />
+          </div>
+        </transition>
+
+        <!--      TODO: Доработать добавление в корзину и удаление из нее-->
+        <div class='item desc'>
+          <div class='desc desc__container'>
+            <div>
+              <div class='desc container__duo'>
+                <div v-if="product.attributes?.title" class='desc__title'>
+                  {{ product.attributes?.title }}
+                </div>
+                <div class='desc__id'>
+                  Кол-во на складе: {{ product.attributes?.count }}
+                  <!--                TODO: Общая стоимость -->
+                  <!--                Общая стоимость: {{product.itemCommonPrice}}₽-->
+                </div>
+                <div
+                  v-for="(item, i) in product.attributes?.Kategorii?.data"
+                  :key="i"
+                  class='desc__category'
+                >
+                  {{ item.attributes?.Name }}
+                </div>
               </div>
               <div
-                v-for="(item, i) in product.attributes?.Kategorii?.data"
-                :key="i"
-                class='desc__category'
+                v-if="product.attributes?.description"
+                class='desc__desc'
               >
-                {{ item.attributes?.Name }}
+                {{ product.attributes?.description }}
+              </div>
+              <div class='desc__cost'>
+                {{ product.attributes?.price }}₽
               </div>
             </div>
-            <div
-              v-if="product.attributes?.description"
-              class='desc__desc'
-            >
-              {{ product.attributes?.description }}
+            <div class='btn__container'>
+              <button v-if='inCart > 0' @click='removeProductFromCart'>-</button>
+              <button class='desc btn__add' @click="addProductToCart">
+                <span v-if='inCart === 0'>Добавить в корзину</span>
+                <span v-if='inCart > 0'>В корзине {{product.inCart}}шт.</span>
+              </button>
             </div>
-            <div class='desc__cost'>
-              {{ product.attributes?.price }}₽
-            </div>
-          </div>
-          <div class='btn__container'>
-            <button v-if='inCart > 0' @click='removeProductFromCart'>-</button>
-            <button class='desc btn__add' @click="addProductToCart">
-              <span v-if='inCart === 0'>Добавить в корзину</span>
-              <span v-if='inCart > 0'>В корзине {{product.inCart}}шт.</span>
-            </button>
           </div>
         </div>
       </div>
@@ -53,9 +62,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import BaseCarousel from "@/components/ui/BaseCarousel";
+
 
 export default {
   name: 'Index',
+  components: {
+    BaseCarousel
+  },
   data() {
     return {
       inCart: 0
@@ -65,6 +79,9 @@ export default {
     ...mapGetters({
       product: 'data/getProduct',
     }),
+    sliderItems() {
+      return this.product.attributes?.images?.data
+    }
   },
   async mounted() {
     const { id } = this.$route.params;
@@ -84,6 +101,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.items__item {
+  display: flex;
+  justify-content: center;
+}
 .catalog {
   &__container {
     width: 100%;
@@ -106,6 +127,7 @@ export default {
     &:hover {
       box-shadow: 2px 3px 6px 0 rgba(0,0,0,0.2);
       background: #1ec466;
+      cursor: pointer;
     }
   }
 }
@@ -167,7 +189,7 @@ export default {
   &__container {
     margin-top: 20px;
     max-height: 710px;
-    width: 99%;
+    width: 700px;
     background: white;
     object-fit: cover;
     height: 100%;

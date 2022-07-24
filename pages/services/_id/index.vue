@@ -1,58 +1,87 @@
 <template>
-  <div class='catalog catalog__container'>
+  <div class='catalog catalog__container items'>
     <div class='container container__title'>
-      Каталог
+      Услуги
     </div>
-    <div class='item item__container'>
-      {{ service }}
-<!--      <img v-if="!product.imgUrl" class="item__img" src='~/assets/images/unit.png' :alt='product.title'>-->
-<!--      <img v-if="product.imgUrl" class="item__img" :src='product.imgUrl' :alt='product.title'>-->
-<!--      <div class='item desc'>-->
-<!--        <div class='desc desc__container'>-->
-<!--          <div>-->
-<!--            <div class='desc container__duo'>-->
-<!--              <div class='desc__title'>-->
-<!--                {{product.title}}-->
-<!--              </div>-->
-<!--              <div class='desc__id'>-->
-<!--                Актикул #{{product.id}} Кол-во на складе: {{product.inStorage}} Общая стоимость: {{product.itemCommonPrice}}₽-->
-<!--              </div>-->
-<!--              <div class='desc__category'>-->
-<!--                {{product.category}}-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class='desc__desc'>-->
-<!--              {{product.desc}}-->
-<!--            </div>-->
-<!--            <div class='desc__cost'>-->
-<!--              {{product.cost}}₽-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class='btn__container'>-->
-<!--            <button v-if='product.inCart > 0' @click='removeProductFromCart'>-</button>-->
-<!--            <button class='desc btn__add' @click="addProductToCart">-->
-<!--              <span v-if='product.inCart === 0'>Добавить в корзину</span>-->
-<!--              <span v-if='product.inCart > 0'>В корзине {{product.inCart}}шт.</span>-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+    <div class="items__item">
+      <div class='item item__container'>
+
+        <transition name="fade" mode="out-in" appear>
+          <div class="about__common-right">
+            <BaseCarousel
+              v-if="sliderItems"
+              :carousel-data="sliderItems"
+            />
+          </div>
+        </transition>
+
+<!--        {{ service.attributes }}-->
+
+        <!--      TODO: Доработать добавление в корзину и удаление из нее-->
+        <div class='item desc'>
+          <div class='desc desc__container'>
+            <div>
+              <div class='desc container__duo'>
+                <div
+                  v-if="service.attributes?.name"
+                  class='desc__title'
+                >
+                  {{ service.attributes?.name }}
+                </div>
+                <div
+                  v-for="(item, i) in service.attributes?.tipy_uslugs?.data"
+                  :key="i"
+                  class='desc__category'
+                >
+                  {{ item.attributes?.Name }}
+                </div>
+              </div>
+              <div
+                v-if="service.attributes?.description"
+                class='desc__desc'
+              >
+                {{ service.attributes?.description }}
+              </div>
+              <div class='desc__cost'>
+                {{ service.attributes?.price }}₽
+              </div>
+            </div>
+            <div class='btn__container'>
+              <button v-if='inCart > 0' @click='removeProductFromCart'>-</button>
+              <button class='desc btn__add' @click="addProductToCart">
+                <span v-if='inCart === 0'>Добавить в корзину</span>
+                <span v-if='inCart > 0'>В корзине {{service.inCart}}шт.</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import BaseCarousel from "@/components/ui/BaseCarousel";
+
 
 export default {
   name: 'Index',
+  components: {
+    BaseCarousel
+  },
   data() {
-    return {}
+    return {
+      inCart: 0
+    }
   },
   computed: {
     ...mapGetters({
-      service: 'data/getService'
+      service: 'data/getService',
     }),
+    sliderItems() {
+      return this.service.attributes?.images?.data
+    }
   },
   async mounted() {
     const { id } = this.$route.params;
@@ -61,20 +90,21 @@ export default {
   methods: {
     // TODO: Добавить миксины
     // TODO: Доработать внешний вид страницы
-    // async getProduct() {
-    //   this.product = await this.items.find(item => item.id === this.$route.params.id);
-    // },
-    // async addProductToCart() {
-    //   await this.$store.dispatch('header/addToCart', this.product);
-    // },
-    // async removeProductFromCart() {
-    //   await this.$store.dispatch('header/removeFromCart', this.product);
-    // },
+    async addProductToCart() {
+      await this.$store.dispatch('header/addToCart', this.service.attributes);
+    },
+    async removeProductFromCart() {
+      await this.$store.dispatch('header/removeFromCart', this.service.attributes);
+    },
   }
 }
 </script>
 
 <style lang='scss' scoped>
+.items__item {
+  display: flex;
+  justify-content: center;
+}
 .catalog {
   &__container {
     width: 100%;
@@ -97,6 +127,7 @@ export default {
     &:hover {
       box-shadow: 2px 3px 6px 0 rgba(0,0,0,0.2);
       background: #1ec466;
+      cursor: pointer;
     }
   }
 }
@@ -158,7 +189,7 @@ export default {
   &__container {
     margin-top: 20px;
     max-height: 710px;
-    width: 99%;
+    width: 700px;
     background: white;
     object-fit: cover;
     height: 100%;
