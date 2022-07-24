@@ -36,6 +36,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
     'nuxt-material-design-icons-iconfont'
   ],
 
@@ -50,6 +51,12 @@ export default {
   },
 
   build: {
+    productionSourceMap: false,
+    productionGzip: true,
+    productionGzipExtensions: ['js', 'css', 'svg'],
+    extend(config) {
+      config.node = { fs: 'empty' };
+    },
     babel: {
       compact: false
     }

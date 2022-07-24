@@ -128,7 +128,7 @@ export default {
 
 <style lang='scss' scoped>
 .btn_selected {
-  background: #00AA5B;
+  background: $green;
 }
 .nav {
   &__container {

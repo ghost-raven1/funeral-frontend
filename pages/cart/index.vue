@@ -1,5 +1,11 @@
 <template>
   <div class='catalog catalog__container items'>
+    <!--TODO: Добавить пустое состояние корзины -->
+    <!--TODO: Сверстать форму для заказа -->
+    <!--TODO: Продумать дизайн кнопок -->
+    <!--TODO: Добавить валидацию на форму -->
+    <!--TODO: Добавить тултипы -->
+    <!--TODO: Заменить все цвета на цвета из палитры vars -->
     <div
       v-if="tovars.length"
       class='container container__title'

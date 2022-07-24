@@ -118,6 +118,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.about__common-right {
+  display: flex;
+  justify-content: center;
+}
 .items__item {
   display: flex;
   justify-content: center;
