@@ -11,6 +11,7 @@
             <BaseCarousel
               v-if="sliderItems"
               :carousel-data="sliderItems"
+              mode="max"
             />
           </div>
         </transition>
@@ -19,13 +20,14 @@
           <div class='desc desc__container'>
             <div>
               <div class='desc container__duo'>
-                <div v-if="product.attributes?.title" class='desc__title'>
+                <div
+                  v-if="product.attributes?.title"
+                  class='desc__title'
+                >
                   {{ product.attributes?.title }}
                 </div>
                 <div class='desc__id'>
                   Кол-во на складе: {{ product.attributes?.count }}
-                  <!--                TODO: Общая стоимость -->
-                  <!--                Общая стоимость: {{product.itemCommonPrice}}₽-->
                 </div>
                 <div
                   v-for="(item, i) in product.attributes?.Kategorii?.data"
@@ -47,7 +49,9 @@
             </div>
             <div class='btn__container'>
               <button
-                class='desc btn__add'
+                class='desc btn_add'
+                :class="{'btn_disabled': count === product.attributes?.count}"
+                :disabled="count === product.attributes?.count"
                 @click="addTovarInArr(product)"
               >
                 <span v-if="count === 0">
@@ -131,7 +135,7 @@ export default {
     justify-content: flex-end;
     padding: 0 10px 10px 0;
   }
-  &__add {
+  &_add {
     border: none;
     border-radius: 6px;
     background: mediumseagreen;
@@ -141,6 +145,21 @@ export default {
       box-shadow: 2px 3px 6px 0 rgba(0,0,0,0.2);
       background: #1ec466;
       cursor: pointer;
+    }
+  }
+  &_disabled {
+    border: none;
+    border-radius: 6px;
+    background: #5b5a5a;
+    color: aliceblue;
+    transition: .5s;
+    &:hover {
+      border: none;
+      border-radius: 6px;
+      background: #5b5a5a;
+      color: aliceblue;
+      transition: .5s;
+      cursor: default;
     }
   }
 }
@@ -157,13 +176,19 @@ export default {
   }
   &__cost {
     margin-top: 10px;
+    margin-left: 25px;
+    margin-bottom: 20px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 62px;
+    text-align: justify;
     color: mediumseagreen;
   }
   &__desc {
+    display: flex;
     margin-top: 10px;
     font-weight: 500;
+    margin-left: 25px;
+    word-break: break-word;
   }
   &__title {
     font-weight: 600;
@@ -181,7 +206,8 @@ export default {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 25px;
   }
   &__title {
     margin-top: 15px;
@@ -201,8 +227,6 @@ export default {
   }
   &__container {
     margin-top: 20px;
-    max-height: 710px;
-    width: 700px;
     background: white;
     object-fit: cover;
     height: 100%;

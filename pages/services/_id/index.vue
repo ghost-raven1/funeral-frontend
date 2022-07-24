@@ -11,6 +11,7 @@
             <BaseCarousel
               v-if="sliderItems"
               :carousel-data="sliderItems"
+              mode="max"
             />
           </div>
         </transition>
@@ -30,7 +31,7 @@
                   :key="i"
                   class='desc__category'
                 >
-                  {{ item.attributes?.Name }}
+                  {{ item.attributes.name}}
                 </div>
               </div>
               <div
@@ -145,7 +146,7 @@ export default {
 .desc {
   &__container {
     display: grid;
-    grid-template-columns: 11fr 1fr;
+    grid-template-columns: 11fr 2fr;
     margin-top: 20px;
   }
   &__category {
@@ -155,13 +156,19 @@ export default {
   }
   &__cost {
     margin-top: 10px;
+    margin-left: 25px;
+    margin-bottom: 20px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 62px;
+    text-align: justify;
     color: mediumseagreen;
   }
   &__desc {
+    display: flex;
     margin-top: 10px;
     font-weight: 500;
+    margin-left: 25px;
+    word-break: break-word;
   }
   &__title {
     font-weight: 600;
@@ -179,7 +186,8 @@ export default {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 25px;
   }
   &__title {
     margin-top: 15px;
@@ -199,8 +207,6 @@ export default {
   }
   &__container {
     margin-top: 20px;
-    max-height: 710px;
-    width: 700px;
     background: white;
     object-fit: cover;
     height: 100%;

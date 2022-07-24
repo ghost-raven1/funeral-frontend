@@ -1,5 +1,8 @@
 <template>
-  <div class="carousel__wrapper" :class="{'carousel__wrapper_mini': mode === 'mini'}">
+  <div class="carousel__wrapper" :class="[
+    {'carousel__wrapper_mini': mode === 'mini'},
+    {'carousel__wrapper_max': mode === 'max'}
+    ]">
     <div class="carousel" :style="{ 'margin-left': '-' + (100 * currentSlideIndex) + '%'}">
       <BaseCarouselItem
         v-for="item in carouselData"
@@ -100,6 +103,9 @@ export default {
   &__wrapper {
     max-width: 700px;
     overflow: hidden;
+    &_max {
+      max-width: 1072px;
+    }
     &_mini {
       max-width: 400px;
     }
