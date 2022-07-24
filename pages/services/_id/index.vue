@@ -15,9 +15,6 @@
           </div>
         </transition>
 
-<!--        {{ service.attributes }}-->
-
-        <!--      TODO: Доработать добавление в корзину и удаление из нее-->
         <div class='item desc'>
           <div class='desc desc__container'>
             <div>
@@ -47,10 +44,16 @@
               </div>
             </div>
             <div class='btn__container'>
-              <button v-if='inCart > 0' @click='removeProductFromCart'>-</button>
-              <button class='desc btn__add' @click="addProductToCart">
-                <span v-if='inCart === 0'>Добавить в корзину</span>
-                <span v-if='inCart > 0'>В корзине {{service.inCart}}шт.</span>
+              <button
+                class='desc btn__add'
+                @click="addUslugaInArr(service)"
+              >
+                <span v-if="count === 0">
+                  Добавить в корзину
+                </span>
+                <span v-if='count > 0'>
+                  В корзине {{ count }} шт.
+                </span>
               </button>
             </div>
           </div>
@@ -72,7 +75,10 @@ export default {
   },
   data() {
     return {
-      inCart: 0
+      id: this.$route.params?.id,
+      count: 0,
+      itemsIdArr: [],
+      itemsArr: []
     }
   },
   computed: {
@@ -84,17 +90,22 @@ export default {
     }
   },
   async mounted() {
-    const { id } = this.$route.params;
-    await this.$store.dispatch('data/getService', id);
+    await this.$store.dispatch('data/getService', this.id);
   },
   methods: {
-    // TODO: Добавить миксины
-    // TODO: Доработать внешний вид страницы
-    async addProductToCart() {
-      await this.$store.dispatch('header/addToCart', this.service.attributes);
-    },
-    async removeProductFromCart() {
-      await this.$store.dispatch('header/removeFromCart', this.service.attributes);
+    async addUslugaInArr(item) {
+      // Добавляем в массив id товаров
+      this.itemsIdArr.push({
+        __component: "usluga.usluga",
+        uslugas: [this.id]
+      })
+      this.count = this.itemsIdArr.length
+      const finalItemsIdArr = JSON.parse(JSON.stringify(this.itemsIdArr))
+      await this.$store.dispatch('header/addUslugaIdToCart', finalItemsIdArr);
+      // Добавляем в массив id товаров
+      this.itemsArr.push(item)
+      const finalItemsArr = JSON.parse(JSON.stringify(this.itemsArr))
+      await this.$store.dispatch('header/addUslugaToCart', finalItemsArr);
     },
   }
 }

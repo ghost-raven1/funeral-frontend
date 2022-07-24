@@ -11,7 +11,12 @@
       </div>
       <div v-if="tab === 'Все' || tab === 'Товары'" class="nav nav__container">
         <h2 class="nav__title">
-          Товары
+          <span>
+            Товары
+          </span>
+          <span v-if="products.length">
+            ({{products.length}} шт)
+          </span>
         </h2>
         <div class='container__grid'>
           <div v-for="(item, i) in products" :key='i' class='grid grid__item'>
@@ -44,7 +49,12 @@
       </div>
       <div v-if="tab === 'Все' || tab === 'Услуги'" class="nav nav__container">
         <h2 class="nav__title">
-          Услуги
+          <span>
+            Услуги
+          </span>
+          <span v-if="services.length">
+            ({{services.length}} шт)
+          </span>
         </h2>
 <!--        TODO: Добавить стили исправить верстку -->
         <div class='container__grid'>

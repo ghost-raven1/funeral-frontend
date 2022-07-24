@@ -32,7 +32,6 @@ export default {
     await this.$store.dispatch('data/getCommon')
   },
   methods: {
-    // TODO: добавить возможность редактировать название сайта
     toMainPage (){
       this.$router.push('/')
     },

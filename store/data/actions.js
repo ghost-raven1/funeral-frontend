@@ -1,4 +1,16 @@
 export default {
+  async pushZakaz({ commit }, data) {
+    try {
+      // eslint-disable-next-line no-console
+      console.log('data zakaz', data)
+      await this.$axios.$post(`/zakazs`, data);
+      return true;
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('error branches get');
+      return false;
+    }
+  },
   async getBranches({ commit }, id) {
     try {
       const response = await this.$axios.$get(`/filials?populate=*`);

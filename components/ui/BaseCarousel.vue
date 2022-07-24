@@ -1,10 +1,11 @@
 <template>
-  <div class="carousel__wrapper">
+  <div class="carousel__wrapper" :class="{'carousel__wrapper_mini': mode === 'mini'}">
     <div class="carousel" :style="{ 'margin-left': '-' + (100 * currentSlideIndex) + '%'}">
       <BaseCarouselItem
         v-for="item in carouselData"
         :key="item.id"
         :item-data="item.attributes"
+        :mode="mode"
       >
         <p>{{ item.name }}</p>
         <p>{{ item.id }}</p>
@@ -28,6 +29,10 @@ export default {
   name: 'CtmCarousel',
   components: { BaseCarouselItem },
   props: {
+    mode: {
+      type: String,
+      default: ''
+    },
     carouselData: {
       type: Array,
       default: () => [],
@@ -95,6 +100,9 @@ export default {
   &__wrapper {
     max-width: 700px;
     overflow: hidden;
+    &_mini {
+      max-width: 400px;
+    }
   }
 }
 

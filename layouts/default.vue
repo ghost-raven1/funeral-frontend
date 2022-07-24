@@ -40,7 +40,6 @@ export default {
 .template {
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
-  overflow: auto;
   &__content {
     display: flex;
     width: 100%;

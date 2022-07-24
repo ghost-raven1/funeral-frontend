@@ -3,9 +3,14 @@
     <img
       v-if="imageSlide"
       class="carousel-item__img"
+      :class="{'carousel-item__img_mini': mode === 'mini'}"
       :src="itemData.url"
       alt=""/>
-    <div v-else class="carousel-item__content">
+    <div
+      v-else
+      class="carousel-item__content"
+      :class="{'carousel-item__content_mini': mode === 'mini'}"
+    >
       <slot></slot>
     </div>
   </div>
@@ -15,6 +20,10 @@
 export default {
   name: 'CtmCarouselItem',
   props: {
+    mode: {
+      type: String,
+      default: ''
+    },
     itemData: {
       type: Object,
       default: () => {
@@ -34,11 +43,19 @@ export default {
     width: 700px;
     height: 400px;
     border-radius: 6px;
+    &_mini {
+      width: 400px;
+      height: 300px;
+    }
   }
 
   &__content {
     max-width: 700px;
     max-height: 400px;
+    &_mini {
+      width: 400px;
+      height: 300px;
+    }
   }
 }
 
