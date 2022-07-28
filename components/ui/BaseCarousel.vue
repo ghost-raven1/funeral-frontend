@@ -112,33 +112,33 @@ export default {
   }
 }
 
-//@include _767 {
-//  .carousel__wrapper {
-//    max-width: 500px;
-//  }
-//}
-//
-//@include _575 {
-//  .carousel__wrapper {
-//    max-width: 450px;
-//  }
-//}
-//
-//@include _480 {
-//  .carousel__wrapper {
-//    max-width: 350px;
-//  }
-//}
-//
-//@include _380 {
-//  .carousel__wrapper {
-//    max-width: 300px;
-//  }
-//}
-//
-//@include _350 {
-//  .carousel__wrapper {
-//    max-width: 250px;
-//  }
-//}
+@include _767 {
+  .carousel__wrapper {
+    max-width: 500px;
+  }
+}
+
+@include _575 {
+  .carousel__wrapper {
+    max-width: 450px;
+  }
+}
+
+@include _480 {
+  .carousel__wrapper {
+    max-width: 350px;
+  }
+}
+
+@include _380 {
+  .carousel__wrapper {
+    max-width: 300px;
+  }
+}
+
+@include _350 {
+  .carousel__wrapper {
+    max-width: 250px;
+  }
+}
 </style>

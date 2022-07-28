@@ -73,38 +73,38 @@ export default {
   }
 }
 
-//@include _767 {
-//  .carousel-item__img {
-//    max-width: 500px;
-//    max-height: 300px;
-//  }
-//}
-//
-//@include _575 {
-//  .carousel-item__img {
-//    max-width: 450px;
-//    max-height: 250px;
-//  }
-//}
-//
-//@include _480 {
-//  .carousel-item__img {
-//    max-width: 350px;
-//    max-height: 200px;
-//  }
-//}
-//
-//@include _380 {
-//  .carousel-item__img {
-//    max-width: 300px;
-//    max-height: 200px;
-//  }
-//}
-//
-//@include _350 {
-//  .carousel-item__img {
-//    max-width: 250px;
-//    max-height: 180px;
-//  }
-//}
+@include _767 {
+  .carousel-item__img {
+    max-width: 500px;
+    max-height: 300px;
+  }
+}
+
+@include _575 {
+  .carousel-item__img {
+    max-width: 450px;
+    max-height: 250px;
+  }
+}
+
+@include _480 {
+  .carousel-item__img {
+    max-width: 350px;
+    max-height: 200px;
+  }
+}
+
+@include _380 {
+  .carousel-item__img {
+    max-width: 300px;
+    max-height: 200px;
+  }
+}
+
+@include _350 {
+  .carousel-item__img {
+    max-width: 250px;
+    max-height: 180px;
+  }
+}
 </style>

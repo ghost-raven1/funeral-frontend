@@ -19,7 +19,9 @@ export default {
   ],
 
   plugins: [
-    { src: '@plugins/injectComponents.js' }
+    { src: '@plugins/injectComponents.js' },
+    { src: '@plugins/vee-validate.js' },
+    { src: '@plugins/maska.js' },
   ],
 
   components: true,
@@ -54,6 +56,7 @@ export default {
   build: {
     productionSourceMap: false,
     productionGzip: true,
+    transpile: ["vee-validate/dist/rules"],
     productionGzipExtensions: ['js', 'css', 'svg'],
     extend(config) {
       config.node = { fs: 'empty' };

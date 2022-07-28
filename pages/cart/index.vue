@@ -3,151 +3,220 @@
     <!--TODO: Добавить пустое состояние корзины -->
     <!--TODO: Сверстать форму для заказа -->
     <!--TODO: Продумать дизайн кнопок -->
-    <!--TODO: Добавить валидацию на форму -->
-    <!--TODO: Добавить тултипы -->
     <!--TODO: Заменить все цвета на цвета из палитры vars -->
     <!-- Добавить мобильный аваптив -->
     <!--TODO: Добавить иконки для кнопок -->
     <!-- TODO: Добавить очистку формы и корзины после оформления заказа -->
-    <div
-      v-if="tovars.length"
-      class='container container__title'
-    >
-      Товары в корзине {{ tovars.length }} шт.,
-      Стоимость товаров в корзине: {{ totalPriceTovar }}Р
-      <button @click="isShowTovar = !isShowTovar">
-        {{ !isShowTovar ? 'Посмотреть' : 'Скрыть' }}
-      </button>
-    </div>
-    <div v-if="isShowTovar" class="items__item">
-      <div v-for="(item, i) in tovars" :key="i" class='item item__container'>
-
-        <transition name="fade" mode="out-in" appear>
-          <div class="about__common-right">
-            <BaseCarousel
-              v-if="item.attributes?.images?.data.length"
-              :carousel-data="item.attributes?.images?.data"
-              mode="mini"
-            />
-          </div>
-        </transition>
-
-        <div class='item desc'>
-          <div class='desc desc__container'>
-            <div>
-              <div class='desc container__duo'>
-                <div v-if="item.attributes?.title" class='desc__title'>
-                  {{ item.attributes?.title }}
-                </div>
-                <div class='desc__id'>
-                  Кол-во на складе: {{ item.attributes?.count }}
-                </div>
-                <div
-                  v-for="(category, j) in item.attributes?.Kategorii?.data"
-                  :key="j"
-                  class='desc__category'
-                >
-                  {{ category.attributes?.Name }}
-                </div>
-              </div>
-              <div
-                v-if="item.attributes?.description"
-                class='desc__desc'
-              >
-                {{ item.attributes?.description }}
-              </div>
-              <div class='desc__cost'>
-                {{ item.attributes?.price }}₽
-              </div>
-            </div>
-            <div class='btn__container'>
-              <button class='desc btn__add' @click="removeFromCartTovar(i)">
-                Удалить
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      v-if="uslugas.length"
-      class='container container__title'
-    >
-      Услуги в корзине {{ uslugas.length }} шт.,
-      Стоимость услуг в корзине: {{ totalPriceUslugas }}Р
-      <button @click="isShowUslugs = !isShowUslugs">
-        {{!isShowUslugs ? 'Посмотреть' : 'Скрыть'}}
-      </button>
-    </div>
-    <div v-if="isShowUslugs" class="items__item">
-      <div v-for="(item, i) in uslugas" :key="i" class='item item__container'>
-
-        <transition name="fade" mode="out-in" appear>
-          <div class="about__common-right">
-            <BaseCarousel
-              v-if="item.attributes?.images?.data.length"
-              :carousel-data="item.attributes?.images?.data"
-              mode="mini"
-            />
-          </div>
-        </transition>
-
-        <div class='item desc'>
-          <div class='desc desc__container'>
-            <div>
-              <div class='desc container__duo'>
-                <div
-                  v-if="item.attributes?.name"
-                  class='desc__title'
-                >
-                  {{ item.attributes?.name }}
-                </div>
-                <div
-                  v-for="(category, j) in item.attributes?.tipy_uslugs?.data"
-                  :key="j"
-                  class='desc__category'
-                >
-                  {{ category.attributes.name }}
-                </div>
-              </div>
-              <div
-                v-if="item.attributes?.description"
-                class='desc__desc'
-              >
-                {{ item.attributes?.description }}
-              </div>
-              <div class='desc__cost'>
-                {{ item.attributes?.price }}₽
-              </div>
-            </div>
-            <div class='btn__container'>
-              <button class='desc btn__add' @click="removeFromCartUsluga(i)">
-                Удалить
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class='container container__title'>
-      Общая стоимость: {{ tovars.length !== 0 || uslugas.length !== 0 ? totalPrice : 0 }}Р
-      <button
-        :disabled="tovars.length === 0 && uslugas.length === 0"
-        @click="isShowCartForm = !isShowCartForm"
+    <div>
+      <div class='container container__title'>
+        Общая стоимость: {{ tovars.length !== 0 || uslugas.length !== 0 ? totalPrice : 0 }}Р
+        <button
+          :disabled="tovars.length === 0 && uslugas.length === 0"
+          @click="isShowCartForm = !isShowCartForm"
         >
-        {{ !isShowCartForm ? 'Заполнить форму' : 'Скрыть форму' }}
-      </button>
+          {{ !isShowCartForm ? 'Заполнить форму' : 'Скрыть форму' }}
+        </button>
+      </div>
+      <validation-observer v-if="isShowCartForm" v-slot="{handleSubmit, invalid}" class="form" tag="div">
+        <validation-provider v-slot="{ errors }" rules="min:5|required" class="form__field">
+          <label for="name" class="form__field-label">
+            ФИО
+          </label>
+          <input
+            id="name"
+            v-model="name"
+            class="form__input"
+            placeholder="ФИО"
+          />
+          <span class="form__field-error">{{ errors[0] }}</span>
+        </validation-provider>
+        <validation-provider v-slot="{ errors }" rules="min:5" class="form__field">
+          <label for="email" class="form__field-label">
+            Email
+          </label>
+          <input
+            id="email"
+            v-model="email"
+            class="form__input"
+            placeholder="Емайл"
+          />
+          <span class="form__field-error">{{ errors[0] }}</span>
+        </validation-provider>
+        <validation-provider v-slot="{ errors }" rules="required|phoneNumber" class="form__field" name="Телефон">
+          <label for="phone" class="form__field-label">
+            Мобильный телефон
+          </label>
+          <input
+            id="phone"
+            v-model="phone"
+            class="form__input"
+            v-maska="'+7##########'"
+            placeholder="+7__________"
+          />
+          <span class="form__field-error">{{ errors[0] }}</span>
+        </validation-provider>
+        <validation-provider v-slot="{ errors }" rules="min:5|required" class="form__field">
+          <label for="place" class="form__field-label">
+            Адрес
+          </label>
+          <input
+            id="place"
+            v-model="place"
+            class="form__input"
+            placeholder="Адрес"
+          />
+          <span class="form__field-error">{{ errors[0] }}</span>
+        </validation-provider>
+        <validation-provider v-slot="{ errors }" rules="min:5|required" class="form__field">
+          <label for="wish" class="form__field-label">
+            Комментарий к заказу
+          </label>
+          <textarea
+            id="wish"
+            v-model="wish"
+            rows="20"
+            class="form__input"
+            style="resize: none;"
+            placeholder="Комментарий к заказу"
+          />
+          <span class="form__field-error">{{ errors[0] }}</span>
+        </validation-provider>
+        <button
+            class="btn_add"
+            :class="{'btn_disabled':invalid}"
+            :disabled="invalid"
+            @click="handleSubmit(pushZakaz)">
+            Оформить заказ
+          </button>
+      </validation-observer>
     </div>
-    <div v-if="isShowCartForm" class="form">
-      <input v-model="name" placeholder="ФИО" />
-      <input v-model="email" placeholder="Емайл" />
-      <input v-model="phone" placeholder="Телефон для связи" />
-      <input v-model="place" placeholder="Адрес" />
-      <textarea v-model="wish" placeholder="Комментарии к заказу" />
-      <button @click="pushZakaz">Оформить заказ</button>
+
+    <div>
+      <div
+        v-if="tovars.length"
+        class='container container__title'
+      >
+        Товары в корзине {{ tovars.length }} шт.,
+        Стоимость товаров: {{ totalPriceTovar }}Р
+        <button @click="isShowTovar = !isShowTovar">
+          {{ !isShowTovar ? 'Посмотреть' : 'Скрыть' }}
+        </button>
+      </div>
+      <div v-if="isShowTovar" class="items__item">
+        <div v-for="(item, i) in tovars" :key="i" class='item item__container'>
+
+          <transition name="fade" mode="out-in" appear>
+            <div class="about__common-right">
+              <BaseCarousel
+                v-if="item.attributes?.images?.data.length"
+                :carousel-data="item.attributes?.images?.data"
+                mode="mini"
+              />
+            </div>
+          </transition>
+
+          <div class='item desc'>
+            <div class='desc desc__container'>
+              <div>
+                <div class='desc container__duo'>
+                  <div v-if="item.attributes?.title" class='desc__title'>
+                    {{ item.attributes?.title }}
+                  </div>
+                  <div class='desc__id'>
+                    Кол-во на складе: {{ item.attributes?.count }}
+                  </div>
+                  <div
+                    v-for="(category, j) in item.attributes?.Kategorii?.data"
+                    :key="j"
+                    class='desc__category'
+                  >
+                    {{ category.attributes?.Name }}
+                  </div>
+                </div>
+                <div
+                  v-if="item.attributes?.description"
+                  class='desc__desc'
+                >
+                  {{ item.attributes?.description }}
+                </div>
+                <div class='desc__cost'>
+                  {{ item.attributes?.price }}₽
+                </div>
+              </div>
+              <div class='btn__container'>
+                <button class='desc btn__add' @click="removeFromCartTovar(i)">
+                  Удалить
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div>
+      <div
+        v-if="uslugas.length"
+        class='container container__title'
+      >
+        Услуги в корзине {{ uslugas.length }} шт.,
+        Стоимость услуг: {{ totalPriceUslugas }}Р
+        <button @click="isShowUslugs = !isShowUslugs">
+          {{!isShowUslugs ? 'Посмотреть' : 'Скрыть'}}
+        </button>
+      </div>
+      <div v-if="isShowUslugs" class="items__item">
+        <div v-for="(item, i) in uslugas" :key="i" class='item item__container'>
+
+          <transition name="fade" mode="out-in" appear>
+            <div class="about__common-right">
+              <BaseCarousel
+                v-if="item.attributes?.images?.data.length"
+                :carousel-data="item.attributes?.images?.data"
+                mode="mini"
+              />
+            </div>
+          </transition>
+
+          <div class='item desc'>
+            <div class='desc desc__container'>
+              <div>
+                <div class='desc container__duo'>
+                  <div
+                    v-if="item.attributes?.name"
+                    class='desc__title'
+                  >
+                    {{ item.attributes?.name }}
+                  </div>
+                  <div
+                    v-for="(category, j) in item.attributes?.tipy_uslugs?.data"
+                    :key="j"
+                    class='desc__category'
+                  >
+                    {{ category.attributes.name }}
+                  </div>
+                </div>
+                <div
+                  v-if="item.attributes?.description"
+                  class='desc__desc'
+                >
+                  {{ item.attributes?.description }}
+                </div>
+                <div class='desc__cost'>
+                  {{ item.attributes?.price }}₽
+                </div>
+              </div>
+              <div class='btn__container'>
+                <button class='desc btn__add' @click="removeFromCartUsluga(i)">
+                  Удалить
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -165,14 +234,14 @@ export default {
     return {
       totalPriceTovar: 0,
       totalPriceUslugas: 0,
-      isShowTovar: false,
-      isShowUslugs: false,
+      isShowTovar: true,
+      isShowUslugs: true,
       isShowCartForm: false,
       name: '',
       email: '',
       phone: '',
       place: '',
-      wish: ''
+      wish: '',
     }
   },
   head() {
@@ -201,9 +270,6 @@ export default {
         data: {
           Tovars: this.tovarsIds,
           Uslugas: this.uslugasIds,
-          // TODO: Добавить форму для заполнения заказа
-          // TODO: Добавить модалки в случае успехо
-          // TODO: Доработать фронт
           summa: this.totalPrice,
           name: this.name,
           email: this.email,
@@ -244,10 +310,71 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.btn {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 10px 10px 0;
+  }
+  &_add {
+    border: none;
+    border-radius: 6px;
+    background: mediumseagreen;
+    color: aliceblue;
+    transition: .5s;
+    padding: 10px 5px;
+    &:hover {
+      box-shadow: 2px 3px 6px 0 rgba(0,0,0,0.2);
+      background: #1ec466;
+      cursor: pointer;
+    }
+  }
+  &_disabled {
+    border: none;
+    border-radius: 6px;
+    background: #5b5a5a;
+    color: #9a9a9a;
+    padding: 10px 5px;
+    &:hover {
+      border: none;
+      border-radius: 6px;
+      background: #5b5a5a;
+      color: #9a9a9a;
+      cursor: default;
+    }
+  }
+}
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 52px;
+}
 .form {
+  gap: 5px;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  &__field {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    &-label {
+      color: $white;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    &-error {
+      padding-top: 2px;
+      color: $white;
+    }
+  }
+  &__input {
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+
+  }
 }
 .template {
   overflow: hidden !important;
@@ -258,7 +385,6 @@ export default {
 }
 .items__item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: 35px;
   margin-right: 35px;
   margin-bottom: 50px;
