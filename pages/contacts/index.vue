@@ -3,6 +3,7 @@
   <div class='container container__title'>
     Контакты
   </div>
+  <div v-if="branches.length">
     <div v-for='(item, i) in branches' :key='i' class='grid grid__item'>
 
       <div v-if="item.attributes?.title" class="grid__item-title">
@@ -54,7 +55,8 @@
         </a>
       </div>
     </div>
-<!--  <Gmap v-if='mapStatus'/>-->
+  </div>
+  <EmptyData v-else description="Филиалы не найдены!"/>
 </div>
 </template>
 
