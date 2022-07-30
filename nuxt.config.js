@@ -44,7 +44,7 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.BASE_URL
+    baseURL: 'https://ritual-70-frontend.onrender.com/api/'
   },
 
   pwa: {
