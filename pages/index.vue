@@ -83,15 +83,6 @@ export default {
   &__item {
     text-align: center;
     border-radius: 6px;
-    transition: .5s;
-    background: white;
-    opacity:0;
-    animation: show 1s .5s;
-    animation-fill-mode: forwards;
-    &:hover {
-      transform: scale(1.01);
-      box-shadow: 1px 0 17px 0 rgba(225, 225, 225, 0.98);
-    }
   }
 }
 .container {
@@ -114,6 +105,13 @@ export default {
   &__container {
     width: 100%;
     height: 100%;
+  }
+}
+
+
+@include _1099 {
+  .container__grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>

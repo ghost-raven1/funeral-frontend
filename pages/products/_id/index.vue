@@ -43,24 +43,24 @@
               >
                 {{ product.attributes?.description }}
               </div>
-              <div class='desc__cost'>
-                {{ product.attributes?.price }}₽
-              </div>
-            </div>
-            <div class='btn__container'>
-              <button
-                class='desc btn_add'
-                :class="{'btn_disabled': count === product.attributes?.count}"
-                :disabled="count === product.attributes?.count"
-                @click="addTovarInArr(product)"
-              >
+              <div class='btn__container'>
+                <div class='desc__cost'>
+                  {{ product.attributes?.price }}₽
+                </div>
+                <button
+                  class='desc btn_add'
+                  :class="{'btn_disabled': count === product.attributes?.count}"
+                  :disabled="count === product.attributes?.count"
+                  @click="addTovarInArr(product)"
+                >
                 <span v-if="count === 0">
                   Добавить в корзину
                 </span>
-                <span v-if='count > 0'>
+                  <span v-if='count > 0'>
                   В корзине {{ count }} шт.
                 </span>
-              </button>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -137,8 +137,8 @@ export default {
   &__container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    padding: 0 10px 10px 0;
+    justify-content: space-between;
+    padding: 25px 10px 10px 0;
   }
   &_add {
     border: none;
@@ -171,7 +171,6 @@ export default {
 .desc {
   &__container {
     display: grid;
-    grid-template-columns: 11fr 2fr;
     margin-top: 20px;
   }
   &__category {
@@ -184,15 +183,14 @@ export default {
     margin-left: 25px;
     margin-bottom: 20px;
     font-weight: 600;
-    font-size: 62px;
+    font-size: 42px;
     text-align: justify;
     color: mediumseagreen;
   }
   &__desc {
-    display: flex;
+    display: grid;
     margin-top: 10px;
     font-weight: 500;
-    margin-left: 25px;
     word-break: break-word;
   }
   &__title {
@@ -239,6 +237,22 @@ export default {
     text-align: center;
     border-radius: 6px;
     box-shadow: 2px 0 17px 0 rgba(0,0,0,0.15);
+  }
+}
+@include _480 {
+  .desc__desc {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .btn__container {
+    display: flex;
+    gap: 10px;
+  }
+}
+@include _380 {
+  .container__duo {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 </style>

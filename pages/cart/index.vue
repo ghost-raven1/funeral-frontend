@@ -4,13 +4,13 @@
     <!--TODO: Сверстать форму для заказа -->
     <!--TODO: Продумать дизайн кнопок -->
     <!--TODO: Заменить все цвета на цвета из палитры vars -->
-    <!-- Добавить мобильный аваптив -->
     <!--TODO: Добавить иконки для кнопок -->
     <!-- TODO: Добавить очистку формы и корзины после оформления заказа -->
-    <div>
+    <div style="display: flex; width: 100%; flex-direction: column;">
       <div class='container container__title'>
         Общая стоимость: {{ tovars.length !== 0 || uslugas.length !== 0 ? totalPrice : 0 }}Р
         <button
+          class="btn__add"
           :disabled="tovars.length === 0 && uslugas.length === 0"
           @click="isShowCartForm = !isShowCartForm"
         >
@@ -98,7 +98,7 @@
       >
         Товары в корзине {{ tovars.length }} шт.,
         Стоимость товаров: {{ totalPriceTovar }}Р
-        <button @click="isShowTovar = !isShowTovar">
+        <button class="btn__add" @click="isShowTovar = !isShowTovar">
           {{ !isShowTovar ? 'Посмотреть' : 'Скрыть' }}
         </button>
       </div>
@@ -139,14 +139,14 @@
                 >
                   {{ item.attributes?.description }}
                 </div>
-                <div class='desc__cost'>
-                  {{ item.attributes?.price }}₽
+                <div class='btn__container'>
+                  <div class='desc__cost'>
+                    {{ item.attributes?.price }}₽
+                  </div>
+                  <button class='desc btn__add' @click="removeFromCartTovar(i)">
+                    Удалить
+                  </button>
                 </div>
-              </div>
-              <div class='btn__container'>
-                <button class='desc btn__add' @click="removeFromCartTovar(i)">
-                  Удалить
-                </button>
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@
       >
         Услуги в корзине {{ uslugas.length }} шт.,
         Стоимость услуг: {{ totalPriceUslugas }}Р
-        <button @click="isShowUslugs = !isShowUslugs">
+        <button class="btn__add" @click="isShowUslugs = !isShowUslugs">
           {{!isShowUslugs ? 'Посмотреть' : 'Скрыть'}}
         </button>
       </div>
@@ -202,14 +202,14 @@
                 >
                   {{ item.attributes?.description }}
                 </div>
-                <div class='desc__cost'>
-                  {{ item.attributes?.price }}₽
+                <div class='btn__container'>
+                  <div class='desc__cost'>
+                    {{ item.attributes?.price }}₽
+                  </div>
+                  <button class='desc btn__add' @click="removeFromCartUsluga(i)">
+                    Удалить
+                  </button>
                 </div>
-              </div>
-              <div class='btn__container'>
-                <button class='desc btn__add' @click="removeFromCartUsluga(i)">
-                  Удалить
-                </button>
               </div>
             </div>
           </div>
@@ -314,8 +314,8 @@ export default {
   &__container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    padding: 0 10px 10px 0;
+    justify-content: space-between;
+    padding: 25px 10px 10px 0;
   }
   &_add {
     border: none;
@@ -399,8 +399,8 @@ export default {
   &__container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    padding: 0 10px 10px 0;
+    justify-content: space-between;
+    padding: 25px 10px 10px 0;
   }
   &__add {
     border: none;
@@ -408,6 +408,8 @@ export default {
     background: mediumseagreen;
     color: aliceblue;
     transition: .5s;
+    padding: 10px;
+    margin: 10px;
     &:hover {
       box-shadow: 2px 3px 6px 0 rgba(0,0,0,0.2);
       background: #1ec466;
@@ -418,7 +420,7 @@ export default {
 .desc {
   &__container {
     display: grid;
-    grid-template-columns: 11fr 2fr;
+    grid-template-columns: 1fr;
     margin-top: 20px;
   }
   &__category {
@@ -428,13 +430,19 @@ export default {
   }
   &__cost {
     margin-top: 10px;
+    margin-left: 25px;
+    margin-bottom: 20px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 42px;
+    text-align: justify;
     color: mediumseagreen;
   }
   &__desc {
+    display: grid;
     margin-top: 10px;
     font-weight: 500;
+    margin-left: 25px;
+    word-break: break-word;
   }
   &__title {
     font-weight: 600;
@@ -452,7 +460,8 @@ export default {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 25px;
   }
   &__title {
     margin-top: 15px;
@@ -479,6 +488,47 @@ export default {
     text-align: center;
     border-radius: 6px;
     box-shadow: 2px 0 17px 0 rgba(0,0,0,0.15);
+  }
+}
+
+@include _1400 {
+  .form {
+    max-width: 500px;
+  }
+  .items {
+    grid-template-columns: 1fr;
+    &__item {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@include _991 {
+  .items {
+    grid-template-columns: 1fr;
+    &__item {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+@include _480 {
+  .form {
+    max-width: 90%;
+  }
+  .desc__desc {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .btn__container {
+    display: flex;
+    gap: 10px;
+  }
+}
+@include _380 {
+  .container__duo {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 </style>

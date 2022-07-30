@@ -73,6 +73,18 @@ export default {
   }
 }
 
+@include  _1099 {
+  .carousel-item__img {
+    max-width: 900px;
+  }
+}
+
+@include _991 {
+  .carousel-item__img {
+    max-width: 700px;
+  }
+}
+
 @include _767 {
   .carousel-item__img {
     max-width: 500px;

@@ -211,4 +211,21 @@ export default {
   }
 }
 
+@include _991 {
+  .container__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include _767 {
+  .container__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@include _575 {
+  .container__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>

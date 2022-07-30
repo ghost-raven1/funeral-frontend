@@ -131,9 +131,24 @@ export default {
     color: #313131;
   }
 }
-//@include _480 {
-//  .card {
-//    width: 270px;
-//  }
-//}
+@include _575 {
+  .card {
+    height: auto;
+    &__title {
+      margin-bottom: 3px;
+    }
+    &__desc {
+      height: auto;
+      overflow: hidden;
+      line-height: inherit;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+@include _480 {
+  .card__container {
+    margin: 5px 16px 0 16px;
+  }
+}
 </style>

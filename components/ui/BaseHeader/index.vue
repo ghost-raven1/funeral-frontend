@@ -61,12 +61,15 @@ a {
   }
 }
 .header {
-  height: 60px;
+  height: 120px;
   width: 100%;
   display: flex;
   position: fixed;
   justify-content: space-between;
-  background: transparent;
+  background: linear-gradient(79deg, #858585, #2d96b6);
+  background-size: 400% 400%;
+  -webkit-animation: headerAnimation 55s ease infinite;
+  animation: headerAnimation 55s ease infinite;
   z-index: 1;
   &__navs {
     display: flex;
@@ -99,6 +102,18 @@ a {
     }
     &:hover {
       color: #ffc035;
+    }
+  }
+  @include _991 {
+    .header {
+      &__navs a {
+        font-size: 14px;
+      }
+    }
+  }
+  @include _380 {
+    .header__logo {
+      font-size: 16px;
     }
   }
 }

@@ -66,5 +66,12 @@ export default {
     height: 100%;
     width: 100%;
   }
+  @include _767 {
+    .header {
+      display: flex;
+      height: 120px;
+      flex-direction: column;
+    }
+  }
 }
 </style>
