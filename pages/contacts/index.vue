@@ -17,7 +17,7 @@
       />
 
       <div v-if='item.attributes?.address' class='grid'>
-        <a @click='openMap'>
+        <a @click='copyAddress(item.attributes?.address)'>
           <div class='item'>
             <div class='item__title'>
               Адрес
@@ -85,8 +85,19 @@ export default {
     this.$store.dispatch('data/getBranches')
   },
   methods: {
-    openMap() {
-      this.mapStatus = !this.mapStatus;
+    async copyAddress(address) {
+      try {
+        await window.navigator.clipboard.writeText(address)
+        const text = await window.navigator.clipboard.readText()
+        this.$toast.success(`Адрес "${text}" сохранен в буфер обмена!`);
+        window.navigator.vibrate(1)
+        await setTimeout(() => {
+          window.navigator.vibrate(0)
+        }, 500)
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e)
+      }
     },
   },
 }
