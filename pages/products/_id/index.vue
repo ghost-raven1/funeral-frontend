@@ -58,6 +58,8 @@
                   :disabled="count === product.attributes?.count"
                   @click="addTovarInArr(product)"
                 >
+                  <!-- https://nuxt-seo.frostbutter.com/ -->
+                  <!-- TODO: Добавить адаптив к скелетной анимации -->
                   <!-- TODO: Добавить мутацию на товар и услугу после добавления товара в корзину -->
                   <!-- TODO: Добавить error layout https://mavrickmaster.medium.com/custom-error-pages-with-nuxt-js-3c70e6c51aff-->
                 <span v-if="count === 0">

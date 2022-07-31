@@ -28,8 +28,14 @@ export default {
 
   buildModules: [
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@aceforth/nuxt-optimized-images',
+    'nuxt-compress'
   ],
+
+  optimizedImages: {
+    optimizeImages: true
+  },
 
   styleResources: {
     scss: ['./assets/scss/resources.scss']
@@ -40,7 +46,44 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     'nuxt-material-design-icons-iconfont',
-    "vue-toastification/nuxt"
+    "vue-toastification/nuxt",
+    '@nuxtjs/sitemap',
+    [
+      '@nuxtjs/yandex-metrika',
+      {
+        id: '89787737',
+        webvisor: true,
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true
+      }
+    ],
+    [
+      "nuxt-social-meta",
+      {
+        url: "https://ritual70.netlify.app/",
+        title: "Центр Ритуальных Услуг",
+        site_name: "Центр Ритуальных Услуг",
+        description: "Интернет-каталог товаров ритуальных услуг",
+        img: "static/icon.png",
+        img_size: { width: "80", height: "80" },
+        locale: "ru_RU",
+        twitter: "@ritual",
+        twitter_card: "static/icon.png",
+        theme_color: "#FFFFFF"
+      }
+    ],
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          threshold: 8192
+        },
+        brotli: {
+          threshold: 8192
+        }
+      }
+    ]
   ],
 
   axios: {
