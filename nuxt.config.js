@@ -34,7 +34,7 @@ export default {
   ],
 
   optimizedImages: {
-    optimizeImages: true
+    optimizeImages: false
   },
 
   styleResources: {
