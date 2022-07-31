@@ -111,6 +111,9 @@ export default {
       products: 'data/getProducts',
       services: 'data/getServices'
     }),
+    isOffline () {
+      return this.$nuxt.isOffline
+    },
   },
   async mounted() {
     await this.$store.dispatch('data/getProducts');
@@ -120,8 +123,10 @@ export default {
     // TODO: Добавить миксины
     // TODO: Доработать внешний вид страницы
     toItem(id, type) {
-      this.$route.params.type = type;
-      this.$router.push(type === 'услуги' ? `/services/${id}` : `/products/${id}`);
+      if (!this.isOffline) {
+        this.$route.params.type = type;
+        this.$router.push(type === 'услуги' ? `/services/${id}` : `/products/${id}`);
+      }
     },
   },
 }

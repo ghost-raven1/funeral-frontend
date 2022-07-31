@@ -8,6 +8,7 @@
 
         <transition name="fade" mode="out-in" appear>
           <div class="about__common-right">
+            <SkeletonBlock v-if="!sliderItems" class="skeleton-card__image"/>
             <BaseCarousel
               v-if="sliderItems"
               :carousel-data="sliderItems"
@@ -20,13 +21,14 @@
           <div class='desc desc__container'>
             <div>
               <div class='desc container__duo'>
+                <SkeletonBlock v-if="!product.attributes?.title" />
                 <div
                   v-if="product.attributes?.title"
                   class='desc__title'
                 >
                   {{ product.attributes?.title }}
                 </div>
-                <div class='desc__id'>
+                <div v-if="product.attributes?.count" class='desc__id'>
                   Кол-во на складе: {{ product.attributes?.count }}
                 </div>
                 <div
@@ -45,7 +47,10 @@
               </div>
               <div class='btn__container'>
                 <div class='desc__cost'>
-                  {{ product.attributes?.price }}₽
+                  <SkeletonBlock v-if="!product.attributes?.price" />
+                  <span v-if="product.attributes?.price">
+                    {{ product.attributes?.price }}₽
+                  </span>
                 </div>
                 <button
                   class='desc btn_add'
@@ -119,6 +124,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.skeleton-card__image {
+  height: 800px;
+  width: 1000px;
+}
 .about__common-right {
   display: flex;
   justify-content: center;
@@ -209,7 +218,7 @@ export default {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: flex-start;
+    justify-content: center;
     margin-left: 25px;
   }
   &__title {

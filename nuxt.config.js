@@ -21,7 +21,7 @@ export default {
   plugins: [
     { src: '@plugins/injectComponents.js' },
     { src: '@plugins/vee-validate.js' },
-    { src: '@plugins/maska.js' },
+    { src: '@plugins/maska.js' }
   ],
 
   components: true,
@@ -49,7 +49,18 @@ export default {
 
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'ru',
+      icon: false,
+      // display: 'browser',
+      display: 'standalone',
+      workbox: {},
+      meta: {
+        name: 'Ritual Shop',
+        short_name: 'Ritual',
+        author: 'ghost1',
+        description: '',
+        nativeUI: true
+      }
     }
   },
 

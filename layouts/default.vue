@@ -32,31 +32,39 @@ export default {
       branches: 'data/getBranches',
       common: 'data/getCommon'
     }),
+    isOffline () {
+      return this.$nuxt.isOffline
+    },
+  },
+  watch: {
+    isOffline() {
+      this.$toast.warning(`Вы оффлайн, проверьте интернет соединение!`);
+    }
   },
   async mounted() {
     await this.checkData()
   },
   methods: {
     async checkData() {
-      if (this.products.length) {
+      if (!this.products.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getProducts');
-        })
+        }, 5000)
       }
-      if (this.services.length) {
+      if (!this.services.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getServices')
-        })
+        }, 5000)
       }
-      if (this.branches.length) {
+      if (!this.branches.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getBranches')
-        })
+        }, 5000)
       }
-      if (this.common.length) {
+      if (!this.common.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getCommon')
-        })
+        }, 5000)
       }
     },
   },

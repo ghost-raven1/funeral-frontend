@@ -1,7 +1,7 @@
 <template>
   <div class="carousel-item">
     <img
-      v-if="imageSlide"
+      v-if="imageSlide && itemData.url"
       class="carousel-item__img"
       :class="[
         {'carousel-item__img_mini': mode === 'mini'},

@@ -8,6 +8,7 @@
 
         <transition name="fade" mode="out-in" appear>
           <div class="about__common-right">
+            <SkeletonBlock v-if="!sliderItems" class="skeleton-card__image"/>
             <BaseCarousel
               v-if="sliderItems"
               :carousel-data="sliderItems"
@@ -20,6 +21,7 @@
           <div class='desc desc__container'>
             <div>
               <div class='desc container__duo'>
+                <SkeletonBlock v-if="!service.attributes?.name" />
                 <div
                   v-if="service.attributes?.name"
                   class='desc__title'
@@ -42,7 +44,10 @@
               </div>
               <div class='btn__container'>
                 <div class='desc__cost'>
-                  {{ service.attributes?.price }}₽
+                  <SkeletonBlock v-if="!service.attributes?.price" />
+                  <span v-if="service.attributes?.price">
+                    {{ service.attributes?.price }}₽
+                  </span>
                 </div>
                 <button
                   class='desc btn__add'
@@ -114,6 +119,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.skeleton-card__image {
+  height: 800px;
+  width: 1000px;
+}
 .about__common-right {
   display: flex;
   justify-content: center;

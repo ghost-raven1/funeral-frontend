@@ -7,6 +7,7 @@ import VacancyForm from '~/components/ui/forms/vacancy';
 import BaseBtn from "~/components/ui/BaseBtn";
 import BaseCard from "~/components/ui/BaseCard";
 import EmptyData from "@/components/ui/EmptyData";
+import SkeletonBlock from "@/components/SkeletonBlock";
 
 Vue.component('BaseHeader', BaseHeader);
 Vue.component('BaseFooter', BaseFooter);
@@ -15,3 +16,4 @@ Vue.component('VacancyForm', VacancyForm);
 Vue.component('BaseBtn', BaseBtn);
 Vue.component('BaseCard', BaseCard);
 Vue.component('EmptyData', EmptyData);
+Vue.component('SkeletonBlock', SkeletonBlock);

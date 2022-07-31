@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/workbox": "^3.0.0-beta.16",
     "core-js": "^3.23.4",
     "maska": "^1.5.0",
     "nuxt": "^2.2.0",
