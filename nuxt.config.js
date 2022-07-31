@@ -29,7 +29,6 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/dotenv',
-    '@aceforth/nuxt-optimized-images',
     'nuxt-compress'
   ],
 
@@ -47,7 +46,6 @@ export default {
     '@nuxtjs/style-resources',
     'nuxt-material-design-icons-iconfont',
     "vue-toastification/nuxt",
-    '@nuxtjs/sitemap',
     [
       '@nuxtjs/yandex-metrika',
       {
