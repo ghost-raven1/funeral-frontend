@@ -12,7 +12,7 @@ export default {
       return false;
     }
   },
-  async getBranches({ commit }, id) {
+  async getBranches({ commit }) {
     try {
       const response = await this.$axios.$get(`/filials?populate=*`);
       commit('setBranches', response);

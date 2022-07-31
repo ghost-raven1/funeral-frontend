@@ -9,7 +9,7 @@
         <BaseBtn mode="text" title="Товары" :class="{'btn_selected': tab === 'Товары' }" @click="tab = 'Товары'" />
         <BaseBtn mode="text" title="Услуги" :class="{'btn_selected': tab === 'Услуги' }" @click="tab = 'Услуги'" />
       </div>
-      <h2 class="nav__title">
+      <h2 v-if="tab !== 'Услуги'" class="nav__title">
           <span>
             Товары
           </span>
@@ -47,8 +47,8 @@
           </div>
         </div>
       </div>
-      <EmptyData v-else description="Товары не найдены!"/>
-      <h2 class="nav__title">
+      <EmptyData v-if="!products.length" description="Товары не найдены!"/>
+      <h2 v-if="tab !== 'Товары'" class="nav__title">
           <span>
             Услуги
           </span>
@@ -57,7 +57,6 @@
           </span>
       </h2>
       <div v-if="(tab === 'Все' || tab === 'Услуги') && services.length" class="nav nav__container">
-<!--        TODO: Добавить стили исправить верстку -->
         <div class='container__grid'>
           <div v-for="(item, i) in services" :key='i' class='grid grid__item'>
             <div class='grid item' @click='toItem(item.id, "услуги")'>
@@ -87,7 +86,7 @@
           </div>
         </div>
       </div>
-      <EmptyData v-else description="Услуги не найдены!"/>
+      <EmptyData v-if="!services.length" description="Услуги не найдены!"/>
     </div>
   </transition>
 </template>

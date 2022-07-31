@@ -19,8 +19,47 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: 'Default',
+  computed: {
+    ...mapGetters({
+      uslugas: 'header/getUslugas',
+      tovars: 'header/getTovars',
+      products: 'data/getProducts',
+      services: 'data/getServices',
+      branches: 'data/getBranches',
+      common: 'data/getCommon'
+    }),
+  },
+  async mounted() {
+    await this.checkData()
+  },
+  methods: {
+    async checkData() {
+      if (this.products.length) {
+        await setInterval(async () => {
+          await this.$store.dispatch('data/getProducts');
+        })
+      }
+      if (this.services.length) {
+        await setInterval(async () => {
+          await this.$store.dispatch('data/getServices')
+        })
+      }
+      if (this.branches.length) {
+        await setInterval(async () => {
+          await this.$store.dispatch('data/getBranches')
+        })
+      }
+      if (this.common.length) {
+        await setInterval(async () => {
+          await this.$store.dispatch('data/getCommon')
+        })
+      }
+    },
+  },
 }
 </script>
 

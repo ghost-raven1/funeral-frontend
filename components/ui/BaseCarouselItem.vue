@@ -49,13 +49,16 @@ export default {
     width: 700px;
     height: 100%;
     border-radius: 6px;
+    object-fit: cover;
     &_max {
       width: 1072px;
-      height: 600px;
+      //max-height: 700px;
+      object-fit: cover;
     }
     &_mini {
       width: 400px;
-      height: 300px;
+      //height: 300px;
+      object-fit: cover;
     }
   }
 
@@ -75,48 +78,50 @@ export default {
 
 @include  _1099 {
   .carousel-item__img {
-    max-width: 900px;
+    max-width: 800px;
+    object-fit: cover;
   }
 }
 
 @include _991 {
   .carousel-item__img {
     max-width: 700px;
+    object-fit: cover;
   }
 }
 
 @include _767 {
   .carousel-item__img {
-    max-width: 500px;
-    max-height: 300px;
+    max-width: 600px;
+    object-fit: cover;
   }
 }
 
 @include _575 {
   .carousel-item__img {
     max-width: 450px;
-    max-height: 250px;
+    object-fit: cover;
   }
 }
 
 @include _480 {
   .carousel-item__img {
     max-width: 350px;
-    max-height: 200px;
+    object-fit: cover;
   }
 }
 
 @include _380 {
   .carousel-item__img {
     max-width: 300px;
-    max-height: 200px;
+    object-fit: cover;
   }
 }
 
 @include _350 {
   .carousel-item__img {
     max-width: 250px;
-    max-height: 180px;
+    object-fit: cover;
   }
 }
 </style>

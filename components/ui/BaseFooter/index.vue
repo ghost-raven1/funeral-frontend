@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class='footer__copyrights'>
-      Все права защищены. {{ common.attributes?.site_name ? common.attributes?.site_name : 'Имя сайта указано' }}, {{ new Date().getFullYear() }} г.
+      Все права защищены. {{ common.attributes?.site_name ? common.attributes?.site_name : 'Центр ритуальных услуг' }}, {{ new Date().getFullYear() }} г.
     </div>
   </div>
 </template>

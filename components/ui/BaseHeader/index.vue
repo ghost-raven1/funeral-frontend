@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__logo" @click="toMainPage()">
       <img class="header__logo_img" alt="" src='/images/golub1.png'>
-      {{ common.attributes?.site_name ? common.attributes?.site_name : 'Имя сайта указано' }}
+      {{ common.attributes?.site_name ? common.attributes?.site_name : 'Центр ритуальных услуг' }}
     </div>
     <div v-if="$route.path !== '/'" class='header__navs'>
       <nuxt-link v-for='(item, i) in links' :key='i' :to='item.link'>{{ item.title }}

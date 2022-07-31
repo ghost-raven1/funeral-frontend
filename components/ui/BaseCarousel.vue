@@ -113,25 +113,25 @@ export default {
 }
 @include  _1099 {
   .carousel__wrapper {
-    max-width: 400px;
+    max-width: 800px;
   }
 }
 
 @include _991 {
   .carousel__wrapper {
-    max-width: 400px;
+    max-width: 700px;
   }
 }
 
 @include _767 {
   .carousel__wrapper {
-    max-width: 400px;
+    max-width: 600px;
   }
 }
 
 @include _575 {
   .carousel__wrapper {
-    max-width: 400px;
+    max-width: 450px;
   }
 }
 
