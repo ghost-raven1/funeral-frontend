@@ -462,7 +462,7 @@ export default {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    justify-content: flex-start;
+    justify-content: center;
     margin-left: 25px;
   }
   &__title {
