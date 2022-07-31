@@ -17,9 +17,19 @@
             ({{products.length}} шт)
           </span>
       </h2>
-      <div v-if="(tab === 'Все' || tab === 'Товары') && products.length" class="nav nav__container">
-        <div class='container__grid'>
-          <div v-for="(item, i) in products" :key='i' class='grid grid__item'>
+      <div
+        v-if="(tab === 'Все' || tab === 'Товары') && products.length"
+        class="nav nav__container"
+      >
+        <div
+          class='container__grid'
+          :class="{'container__grid_col-3': services.length < 10 }"
+        >
+          <div
+            v-for="(item, i) in products"
+            :key='i'
+            class='grid grid__item'
+          >
             <div class='grid item' @click='toItem(item.id, "товар")'>
               <img
                 v-if="item.attributes?.cover.data"
@@ -27,7 +37,11 @@
                 loading="lazy"
                 :src='item.attributes?.cover.data?.attributes?.url'
                 :alt='item.attributes?.cover.data?.attributes?.name' />
-              <img v-else class="item__img" src='~/assets/images/unit.png' :alt='item.attributes?.cover.data?.attributes?.name' />
+              <img
+                v-else class="item__img"
+                src='~/assets/images/unit.png'
+                :alt='item.attributes?.cover.data?.attributes?.name'
+              />
               <div class='item__title'>
                 {{ item.attributes?.title }}
               </div>
@@ -56,8 +70,14 @@
             ({{services.length}} шт)
           </span>
       </h2>
-      <div v-if="(tab === 'Все' || tab === 'Услуги') && services.length" class="nav nav__container">
-        <div class='container__grid'>
+      <div
+        v-if="(tab === 'Все' || tab === 'Услуги') && services.length"
+        class="nav nav__container"
+      >
+        <div
+          class='container__grid'
+          :class="{'container__grid_col-3': services.length < 10 }"
+        >
           <div v-for="(item, i) in services" :key='i' class='grid grid__item'>
             <div class='grid item' @click='toItem(item.id, "услуги")'>
               <img
@@ -171,6 +191,9 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     grid-gap: 10px;
+    &_col-3 {
+      grid-template-columns: repeat(3, 1fr);;
+    }
   }
 }
 .item {
@@ -183,21 +206,25 @@ export default {
     object-fit: fill;
   }
   &__title {
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    word-break: break-word;
+    font-size: 20px;
   }
   &__category {
     font-style: oblique;
+    word-break: break-word;
     font-size: 14px;
   }
   &__desc {
     font-weight: 400;
-    font-size: 12px;
+    word-break: break-word;
+    font-size: 16px;
   }
   &__cost {
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 600;
+    font-size: 17px;
     margin: 5px 0;
+    color: $green;
   }
 }
 .grid {

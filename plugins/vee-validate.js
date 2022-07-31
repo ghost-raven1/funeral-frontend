@@ -31,8 +31,6 @@ extend('phoneNumber', {
     }
   },
   message: (args) => {
-    // eslint-disable-next-line no-console
-    console.log(args)
     return `${args} не заполнен`
   }
 })

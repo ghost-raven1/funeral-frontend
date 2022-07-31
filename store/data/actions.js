@@ -1,8 +1,6 @@
 export default {
   async pushZakaz({ commit }, data) {
     try {
-      // eslint-disable-next-line no-console
-      console.log('data zakaz', data)
       await this.$axios.$post(`/zakazs`, data);
       this.$toast.success(`Заказ успешно оформлен! Ждите звонка оператора!`);
       return true;

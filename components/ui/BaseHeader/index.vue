@@ -68,8 +68,10 @@ a {
   justify-content: space-between;
   background: linear-gradient(79deg, #858585, #2d96b6);
   background-size: 400% 400%;
-  -webkit-animation: headerAnimation 55s ease infinite;
-  animation: headerAnimation 55s ease infinite;
+  -webkit-animation: headerAnimation 14s ease infinite;
+  -moz-animation: headerAnimation 14s ease infinite;
+  -o-animation: headerAnimation 14s ease infinite;
+  animation: headerAnimation 14s ease infinite;
   z-index: 1;
   &__navs {
     display: flex;

@@ -11,9 +11,6 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'BaseFooter',
-  data () {
-    return {}
-  },
   computed: {
     ...mapGetters({
       common: 'data/getCommon'
@@ -37,10 +34,10 @@ export default {
   position: fixed;
   background: linear-gradient(79deg, #6c6c6c, #2d96b6);
   background-size: 400% 400%;
-  -webkit-animation: headerAnimation 55s ease infinite;
-  -moz-animation: headerAnimation 55s ease infinite;
-  -o-animation: headerAnimation 55s ease infinite;
-  animation: headerAnimation 55s ease infinite;
+  -webkit-animation: headerAnimation 14s ease infinite;
+  -moz-animation: headerAnimation 14s ease infinite;
+  -o-animation: headerAnimation 14s ease infinite;
+  animation: headerAnimation 14s ease infinite;
   z-index: 1;
   &__copyrights {
     width: 100%;
@@ -48,6 +45,15 @@ export default {
     font-weight: 600;
     font-size: 18px;
     color: white;
+  }
+}
+
+@include _480 {
+  .footer {
+    &__copyrights {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 }
 

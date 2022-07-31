@@ -16,7 +16,5 @@ export default {
   },
   setServices(state, data) {
     state.services = data.data;
-    // eslint-disable-next-line no-console
-    console.log(data.data)
   },
 };
