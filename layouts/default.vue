@@ -49,22 +49,22 @@ export default {
       if (!this.products.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getProducts');
-        }, 5000)
+        }, 60000)
       }
       if (!this.services.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getServices')
-        }, 5000)
+        }, 60000)
       }
       if (!this.branches.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getBranches')
-        }, 5000)
+        }, 60000)
       }
       if (!this.common.length) {
         await setInterval(async () => {
           await this.$store.dispatch('data/getCommon')
-        }, 5000)
+        }, 60000)
       }
     },
   },
